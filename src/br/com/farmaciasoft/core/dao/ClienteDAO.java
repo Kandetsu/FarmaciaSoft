@@ -25,7 +25,7 @@ public class ClienteDAO {
 			ps.setString(2, cliente.getCpf());
 			ps.setInt(3, cliente.getIdade());
 			ps.setString(4, cliente.getEndereco());
-			ps.setString(5, cliente.getNum());
+			ps.setInt(5, cliente.getNum());
 			ps.setString(6, cliente.getCidade());
 			ps.setString(7, cliente.getEstado());
 			
@@ -64,14 +64,13 @@ public class ClienteDAO {
 				cli.setCpf(rs.getString("CPF_CLI"));
 				cli.setIdade(rs.getInt("IDADE_CLI"));
 				cli.setEndereco(rs.getString("ENDERECO_CLI"));
-				cli.setNum(rs.getString("NUM_CLI"));
+				cli.setNum(rs.getInt("NUM_CLI"));
 				cli.setCidade(rs.getString("CIDADE_CLI"));
 				cli.setEstado(rs.getString("ESTADO_CLI"));
 				cliente.add(cli);
 			}
 		} catch (SQLException e) {
-			//throw new BusinessException("Erro ao listar os Clientes.");
-			e.printStackTrace();
+			throw new BusinessException("Erro ao listar os Clientes.");
 		}finally {
 			try {
 				ps.close();
@@ -128,7 +127,7 @@ public class ClienteDAO {
 				clienteEncontrado.setCpf(rs.getString("CPF_CLI"));
 				clienteEncontrado.setIdade(rs.getInt("IDADE_CLI"));
 				clienteEncontrado.setEndereco(rs.getString("ENDERECO_CLI"));
-				clienteEncontrado.setNum(rs.getString("NUM_CLI"));
+				clienteEncontrado.setNum(rs.getInt("NUM_CLI"));
 				clienteEncontrado.setCidade(rs.getString("CIDADE_CLI"));
 				clienteEncontrado.setEstado(rs.getString("ESTADO_CLI"));
 			}
@@ -160,7 +159,7 @@ public class ClienteDAO {
 			ps.setString(2, cliente.getCpf());
 			ps.setInt(3, cliente.getIdade());
 			ps.setString(4, cliente.getEndereco());
-			ps.setString(5, cliente.getNum());
+			ps.setInt(5, cliente.getNum());
 			ps.setString(6, cliente.getCidade());
 			ps.setString(7, cliente.getEstado());
 			ps.setLong(8, cliente.getCodigo());

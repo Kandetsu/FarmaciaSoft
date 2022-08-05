@@ -15,7 +15,7 @@ public class teste {
 		cliente.setNome("???");
 		cliente.setCpf("1111111");
 		cliente.setEndereco("???");
-		cliente.setNum("1");
+		cliente.setNum(1);
 		cliente.setIdade(22);
 		cliente.setCidade("???");
 		cliente.setEstado("???");

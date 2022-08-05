@@ -6,7 +6,8 @@ import br.com.farmaciasoft.core.entity.PessoaEntity;
 
 public class PessoaEntity {
 	
-	private String nome, endereco, cidade, estado, num;
+	private String nome, endereco, cidade, estado;
+	private Integer num;
 	private Long codigo;
 	
 	public String getNome() {
@@ -33,10 +34,10 @@ public class PessoaEntity {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public String getNum() {
+	public Integer getNum() {
 		return num;
 	}
-	public void setNum(String num) {
+	public void setNum(Integer num) {
 		this.num = num;
 	}
 	public Long getCodigo() {
