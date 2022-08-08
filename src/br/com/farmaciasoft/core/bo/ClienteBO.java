@@ -10,7 +10,7 @@ public class ClienteBO {
 
 	//Fazer Regras De Negócio
 	
-	public String salvarCliente (ClienteEntity cliente) throws BusinessException {
+	public String salvarCliente(ClienteEntity cliente) throws BusinessException {
 		
 		if(cliente.getNome() == null || cliente.getNome().equals("")) {
 			throw new BusinessException("O nome precisa ser preeenchido!");
@@ -33,8 +33,8 @@ public class ClienteBO {
 		new ClienteDAO().excluirCliente(codigoCliente);
 	}
 	
-	public ClienteEntity buscarPorNome(String nomeCliente) throws BusinessException {
-		return new ClienteDAO().buscarPorNome(nomeCliente);
+	public ClienteEntity buscarID(String idCliente) throws BusinessException {
+		return new ClienteDAO().buscarID(idCliente);
 	}
 	
 	public String alterarCliente(ClienteEntity cliente) throws BusinessException{

@@ -22,8 +22,8 @@ public class ClienteService {
 	public void excluirCliente(Long codigoCliente) throws BusinessException{
 		new ClienteBO().excluirCliente(codigoCliente);
 	}
-	public ClienteEntity buscarPorNome(String nomeCliente) throws BusinessException {
-		return new ClienteBO().buscarPorNome(nomeCliente);
+	public ClienteEntity buscarID(String idCliente) throws BusinessException {
+		return new ClienteBO().buscarID(idCliente);
 	}
 	
 	public String alterarCliente(ClienteEntity cliente) throws BusinessException{

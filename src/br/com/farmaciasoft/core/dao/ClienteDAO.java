@@ -105,7 +105,7 @@ public class ClienteDAO {
 		}	
 	}
 	
-	public ClienteEntity buscarPorNome(String nomeCliente) throws BusinessException {
+	public ClienteEntity buscarID(String idCliente) throws BusinessException {
 		
 		String sql = "SELECT ID_CLI, NOME_CLI, CPF_CLI, IDADE_CLI, ENDERECO_CLI, NUM_CLI, CIDADE_CLI, ESTADO_CLI FROM CLIENTE WHERE ID_CLI = ?";
 		
@@ -114,7 +114,7 @@ public class ClienteDAO {
 		
 		try {
 			ps = ConexaoMySQL.getConexao().prepareStatement(sql);
-			ps.setString(1, nomeCliente);
+			ps.setString(1, idCliente);
 			
 			rs = ps.executeQuery();
 			
