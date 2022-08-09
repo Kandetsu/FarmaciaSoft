@@ -7,16 +7,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
+
 import javax.swing.SwingConstants;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextPane;
 import java.awt.Color;
+
 import javax.swing.border.LineBorder;
 import br.com.farmaciasoft.core.entity.ClienteEntity;
 import br.com.farmaciasoft.core.entity.FornecedorEntity;
@@ -37,6 +36,7 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
+import javax.swing.UIManager;
 
 public class Tela_Cadastro extends JFrame {
 
@@ -64,6 +64,7 @@ public class Tela_Cadastro extends JFrame {
 				try {
 					Tela_Cadastro frame = new Tela_Cadastro();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -76,93 +77,91 @@ public class Tela_Cadastro extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/main_icon.png")));
 		setTitle("FarmaciaSoft");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1230, 695);
+		setBounds(100, 100, 1275, 750);
 		contentPane_FarmaciaSoft = new JPanel();
 		contentPane_FarmaciaSoft.setBackground(Color.BLACK);
 		contentPane_FarmaciaSoft.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane_FarmaciaSoft.setOpaque(false);
 		setContentPane(contentPane_FarmaciaSoft);
 		
 		JTabbedPane tabbedPane_FarmaciaSoft = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane_FarmaciaSoft.setBounds(5, 5, 1250, 705);
 		
 		/* Inicio da tela de Boas Vindas */
 		JPanel painel_BoasVindas = new JPanel();
 		painel_BoasVindas.setBorder(new LineBorder(new Color(0, 0, 0)));
-		painel_BoasVindas.setBackground(Color.LIGHT_GRAY);
+		painel_BoasVindas.setBackground(Color.WHITE);
 		tabbedPane_FarmaciaSoft.addTab("Tela Inicial", null, painel_BoasVindas, null);
 		
 		JLabel lblFarmaciaSoft = new JLabel("FarmaciaSoft");
+		lblFarmaciaSoft.setBounds(541, 11, 123, 32);
 		lblFarmaciaSoft.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFarmaciaSoft.setFont(new Font("Calibri", Font.BOLD, 20));
 		
 		JTextPane txtpn_mensagemBV = new JTextPane();
-		txtpn_mensagemBV.setBackground(Color.LIGHT_GRAY);
+		txtpn_mensagemBV.setBounds(517, 270, 171, 86);
+		txtpn_mensagemBV.setBackground(UIManager.getColor("CheckBox.light"));
+		txtpn_mensagemBV.setForeground(Color.black);
 		txtpn_mensagemBV.setFont(new Font("Calibri", Font.BOLD, 16));
 		txtpn_mensagemBV.setText("Seja Bem-vindo(a) ao projeto que estou realizando referente a cadastros!");
-		GroupLayout gl_painel_BoasVindas = new GroupLayout(painel_BoasVindas);
-		gl_painel_BoasVindas.setHorizontalGroup(
-			gl_painel_BoasVindas.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_painel_BoasVindas.createSequentialGroup()
-					.addGroup(gl_painel_BoasVindas.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_painel_BoasVindas.createSequentialGroup()
-							.addComponent(lblFarmaciaSoft, GroupLayout.PREFERRED_SIZE, 123, GroupLayout.PREFERRED_SIZE)
-							.addGap(24))
-						.addGroup(gl_painel_BoasVindas.createSequentialGroup()
-							.addContainerGap(517, Short.MAX_VALUE)
-							.addComponent(txtpn_mensagemBV, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)))
-					.addGap(515))
-		);
-		gl_painel_BoasVindas.setVerticalGroup(
-			gl_painel_BoasVindas.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_painel_BoasVindas.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblFarmaciaSoft, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addGap(164)
-					.addComponent(txtpn_mensagemBV, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(332, Short.MAX_VALUE))
-		);
-		painel_BoasVindas.setLayout(gl_painel_BoasVindas);
-		/* Fim da tela de Boas Vindas */
+		txtpn_mensagemBV.setOpaque(false);
+		painel_BoasVindas.setLayout(null);
+		painel_BoasVindas.add(lblFarmaciaSoft);
+		painel_BoasVindas.add(txtpn_mensagemBV);
 		
-		/* Inicio da tela do Cliente */
+		JLabel lblBackground_BV = new JLabel("");
+		lblBackground_BV.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/background.jpg")));
+		lblBackground_BV.setBackground(Color.WHITE);
+		lblBackground_BV.setBounds(0, 0, 1250, 705);
+		painel_BoasVindas.add(lblBackground_BV);
 		JPanel painel_Cliente = new JPanel();
 		painel_Cliente.setBorder(new LineBorder(new Color(0, 0, 0)));
 		painel_Cliente.setBackground(Color.LIGHT_GRAY);
 		tabbedPane_FarmaciaSoft.addTab("Cliente", null, painel_Cliente, null);
 		
 		JLabel lblCadastro_Cliente = new JLabel("Cadastro De Cliente");
+		lblCadastro_Cliente.setBounds(530, 12, 184, 25);
 		lblCadastro_Cliente.setVerticalAlignment(SwingConstants.TOP);
 		lblCadastro_Cliente.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCadastro_Cliente.setFont(new Font("Calibri", Font.BOLD, 20));
 		
 		JLabel lblNome_Cliente = new JLabel("Nome: ");
+		lblNome_Cliente.setBounds(312, 132, 41, 18);
 		lblNome_Cliente.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNome_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		JLabel lblCPF_Cliente = new JLabel("CPF:");
+		lblCPF_Cliente.setBounds(312, 162, 24, 18);
 		lblCPF_Cliente.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCPF_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		JLabel lblIdade_Cliente = new JLabel("Idade:");
+		lblIdade_Cliente.setBounds(312, 192, 36, 18);
 		lblIdade_Cliente.setHorizontalAlignment(SwingConstants.LEFT);
 		lblIdade_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		JLabel lblEndereco_Cliente = new JLabel("Endere\u00E7o:");
+		lblEndereco_Cliente.setBounds(312, 222, 57, 18);
 		lblEndereco_Cliente.setHorizontalAlignment(SwingConstants.LEFT);
 		lblEndereco_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		JLabel lblNumCasa_Cliente = new JLabel("N\u00FAmero da casa:");
+		lblNumCasa_Cliente.setBounds(609, 101, 95, 18);
 		lblNumCasa_Cliente.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNumCasa_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		JLabel lblCidade_Cliente = new JLabel("Cidade:");
+		lblCidade_Cliente.setBounds(609, 132, 42, 18);
 		lblCidade_Cliente.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCidade_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		JLabel lblEstado_Cliente = new JLabel("Estado:");
+		lblEstado_Cliente.setBounds(609, 162, 42, 18);
 		lblEstado_Cliente.setHorizontalAlignment(SwingConstants.LEFT);
 		lblEstado_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		JButton btnSalvar_Cliente = new JButton("Salvar Cadastro");
+		btnSalvar_Cliente.setBounds(376, 284, 160, 25);
 		btnSalvar_Cliente.setBackground(Color.WHITE);
 		btnSalvar_Cliente.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/floppy disk.png")));
 		btnSalvar_Cliente.addActionListener(new ActionListener() {
@@ -195,6 +194,7 @@ public class Tela_Cadastro extends JFrame {
 		btnSalvar_Cliente.setFont(new Font("Calibri", Font.BOLD, 13));
 		
 		JButton btnLimpar_Cliente = new JButton("Limpar Formul\u00E1rio");
+		btnLimpar_Cliente.setBounds(546, 284, 160, 25);
 		btnLimpar_Cliente.setBackground(Color.WHITE);
 		btnLimpar_Cliente.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/clear.png")));
 		btnLimpar_Cliente.addActionListener(new ActionListener() {
@@ -212,6 +212,7 @@ public class Tela_Cadastro extends JFrame {
 		btnLimpar_Cliente.setFont(new Font("Calibri", Font.BOLD, 13));
 		
 		JButton btnAtualizar_Cliente = new JButton("Atualizar Tabela");
+		btnAtualizar_Cliente.setBounds(714, 284, 160, 25);
 		btnAtualizar_Cliente.setBackground(Color.WHITE);
 		btnAtualizar_Cliente.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/refresh.png")));
 		btnAtualizar_Cliente.addActionListener(new ActionListener() {
@@ -222,41 +223,49 @@ public class Tela_Cadastro extends JFrame {
 		btnAtualizar_Cliente.setFont(new Font("Calibri", Font.BOLD, 13));
 		
 		textNome_Cliente = new JTextField();
+		textNome_Cliente.setBounds(375, 129, 224, 24);
 		textNome_Cliente.setEditable(false);
 		textNome_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textNome_Cliente.setColumns(10);
 		
 		textCPF_Cliente = new JTextField();
+		textCPF_Cliente.setBounds(375, 159, 224, 24);
 		textCPF_Cliente.setEditable(false);
 		textCPF_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textCPF_Cliente.setColumns(10);
 		
 		textIdade_Cliente = new JTextField();
+		textIdade_Cliente.setBounds(375, 189, 224, 24);
 		textIdade_Cliente.setEditable(false);
 		textIdade_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textIdade_Cliente.setColumns(10);
 		
 		textEndereco_Cliente = new JTextField();
+		textEndereco_Cliente.setBounds(375, 219, 224, 24);
 		textEndereco_Cliente.setEditable(false);
 		textEndereco_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textEndereco_Cliente.setColumns(10);
 		
 		textNumCasa_Cliente = new JTextField();
+		textNumCasa_Cliente.setBounds(714, 99, 224, 24);
 		textNumCasa_Cliente.setEditable(false);
 		textNumCasa_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textNumCasa_Cliente.setColumns(10);
 		
 		textCidade_Cliente = new JTextField();
+		textCidade_Cliente.setBounds(714, 129, 224, 24);
 		textCidade_Cliente.setEditable(false);
 		textCidade_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textCidade_Cliente.setColumns(10);
 		
 		textEstado_Cliente = new JTextField();
+		textEstado_Cliente.setBounds(714, 159, 224, 24);
 		textEstado_Cliente.setEditable(false);
 		textEstado_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textEstado_Cliente.setColumns(10);
 		
 		JButton btnDeletar_Cliente = new JButton("Deletar");
+		btnDeletar_Cliente.setBounds(755, 59, 105, 25);
 		btnDeletar_Cliente.setBackground(Color.WHITE);
 		btnDeletar_Cliente.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/delete.png")));
 		btnDeletar_Cliente.addActionListener(new ActionListener() {
@@ -273,6 +282,7 @@ public class Tela_Cadastro extends JFrame {
 		});
 		
 		JButton btnNovo_Cliente = new JButton("Novo");
+		btnNovo_Cliente.setBounds(410, 59, 105, 25);
 		btnNovo_Cliente.setBackground(Color.WHITE);
 		btnNovo_Cliente.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/plus.png")));
 		btnNovo_Cliente.setFont(new Font("Calibri", Font.PLAIN, 13));
@@ -289,6 +299,7 @@ public class Tela_Cadastro extends JFrame {
 		});
 		
 		JButton btnCancelar_Cliente = new JButton("Cancelar");
+		btnCancelar_Cliente.setBounds(640, 59, 105, 25);
 		btnCancelar_Cliente.setBackground(Color.WHITE);
 		btnCancelar_Cliente.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/cancel.png")));
 		btnCancelar_Cliente.addActionListener(new ActionListener() {
@@ -306,14 +317,17 @@ public class Tela_Cadastro extends JFrame {
 		btnCancelar_Cliente.setFont(new Font("Calibri", Font.PLAIN, 13));
 		
 		JScrollPane scrollPane_Cliente = new JScrollPane();
+		scrollPane_Cliente.setBounds(11, 320, 1224, 346);
 		
 		JLabel lblBuscar_Cliente = new JLabel("Procurar por ID:");
+		lblBuscar_Cliente.setBounds(11, 289, 95, 18);
 		lblBuscar_Cliente.setFont(new Font("Calibri", Font.BOLD, 14));
 		
 		btnDeletar_Cliente.setEnabled(false);
 		btnDeletar_Cliente.setFont(new Font("Calibri", Font.PLAIN, 13));
 		
 		JButton btnBuscar_Cliente = new JButton("Ok");
+		btnBuscar_Cliente.setBounds(110, 284, 50, 25);
 		btnBuscar_Cliente.setBackground(Color.WHITE);
 		btnBuscar_Cliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -323,15 +337,18 @@ public class Tela_Cadastro extends JFrame {
 		btnBuscar_Cliente.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 11));
 		
 		JLabel lblID_Cliente = new JLabel("ID:");
+		lblID_Cliente.setBounds(312, 101, 17, 18);
 		lblID_Cliente.setHorizontalAlignment(SwingConstants.LEFT);
 		lblID_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		textID_Cliente = new JTextField();
+		textID_Cliente.setBounds(375, 99, 224, 24);
 		textID_Cliente.setHorizontalAlignment(SwingConstants.CENTER);
 		textID_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textID_Cliente.setColumns(10);
 		
 		JButton btnEditar_Cliente = new JButton("Editar");
+		btnEditar_Cliente.setBounds(525, 59, 105, 25);
 		btnEditar_Cliente.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/Gear.png")));
 		btnEditar_Cliente.setBackground(Color.WHITE);
 		btnEditar_Cliente.addActionListener(new ActionListener() {
@@ -346,124 +363,6 @@ public class Tela_Cadastro extends JFrame {
 			}
 		});
 		btnEditar_Cliente.setFont(new Font("Calibri", Font.PLAIN, 13));
-		GroupLayout gl_painel_Cliente = new GroupLayout(painel_Cliente);
-		gl_painel_Cliente.setHorizontalGroup(
-			gl_painel_Cliente.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_painel_Cliente.createSequentialGroup()
-					.addContainerGap(510, Short.MAX_VALUE)
-					.addComponent(lblCadastro_Cliente, GroupLayout.PREFERRED_SIZE, 184, GroupLayout.PREFERRED_SIZE)
-					.addGap(509))
-				.addGroup(Alignment.TRAILING, gl_painel_Cliente.createSequentialGroup()
-					.addContainerGap(408, Short.MAX_VALUE)
-					.addComponent(btnNovo_Cliente)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnEditar_Cliente, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnCancelar_Cliente)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnDeletar_Cliente)
-					.addGap(407))
-				.addGroup(Alignment.TRAILING, gl_painel_Cliente.createSequentialGroup()
-					.addContainerGap(286, Short.MAX_VALUE)
-					.addGroup(gl_painel_Cliente.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblIdade_Cliente)
-						.addComponent(lblEndereco_Cliente)
-						.addComponent(lblCPF_Cliente)
-						.addComponent(lblNome_Cliente))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_painel_Cliente.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_painel_Cliente.createSequentialGroup()
-							.addGroup(gl_painel_Cliente.createParallelGroup(Alignment.TRAILING)
-								.addComponent(textCPF_Cliente, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textNome_Cliente, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addGroup(gl_painel_Cliente.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblCidade_Cliente)
-								.addComponent(lblNumCasa_Cliente)))
-						.addGroup(gl_painel_Cliente.createSequentialGroup()
-							.addGroup(gl_painel_Cliente.createParallelGroup(Alignment.TRAILING)
-								.addComponent(textIdade_Cliente, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textEndereco_Cliente, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addGroup(gl_painel_Cliente.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblID_Cliente, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblEstado_Cliente))))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_painel_Cliente.createParallelGroup(Alignment.LEADING)
-						.addComponent(textNumCasa_Cliente, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textCidade_Cliente, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textEstado_Cliente, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textID_Cliente, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE))
-					.addGap(285))
-				.addGroup(gl_painel_Cliente.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_painel_Cliente.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_painel_Cliente.createSequentialGroup()
-							.addComponent(scrollPane_Cliente, GroupLayout.PREFERRED_SIZE, 1183, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())
-						.addGroup(gl_painel_Cliente.createSequentialGroup()
-							.addComponent(lblBuscar_Cliente)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnBuscar_Cliente, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(btnSalvar_Cliente)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnLimpar_Cliente)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnAtualizar_Cliente)
-							.addGap(381))))
-		);
-		gl_painel_Cliente.setVerticalGroup(
-			gl_painel_Cliente.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_painel_Cliente.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblCadastro_Cliente)
-					.addGap(22)
-					.addGroup(gl_painel_Cliente.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNovo_Cliente)
-						.addComponent(btnEditar_Cliente, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnCancelar_Cliente)
-						.addComponent(btnDeletar_Cliente, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addGroup(gl_painel_Cliente.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textNome_Cliente, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNumCasa_Cliente)
-						.addComponent(textNumCasa_Cliente, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNome_Cliente))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_painel_Cliente.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textCidade_Cliente, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textCPF_Cliente, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblCPF_Cliente)
-						.addComponent(lblCidade_Cliente))
-					.addGap(6)
-					.addGroup(gl_painel_Cliente.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textIdade_Cliente, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textEstado_Cliente, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblIdade_Cliente)
-						.addComponent(lblEstado_Cliente))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_painel_Cliente.createParallelGroup(Alignment.LEADING)
-						.addComponent(textID_Cliente, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_painel_Cliente.createParallelGroup(Alignment.BASELINE)
-							.addComponent(textEndereco_Cliente, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(lblEndereco_Cliente)
-							.addComponent(lblID_Cliente, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE)))
-					.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-					.addGroup(gl_painel_Cliente.createParallelGroup(Alignment.TRAILING, false)
-						.addGroup(gl_painel_Cliente.createParallelGroup(Alignment.BASELINE)
-							.addComponent(lblBuscar_Cliente)
-							.addComponent(btnBuscar_Cliente))
-						.addGroup(gl_painel_Cliente.createSequentialGroup()
-							.addGroup(gl_painel_Cliente.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnLimpar_Cliente)
-								.addComponent(btnAtualizar_Cliente)
-								.addComponent(btnSalvar_Cliente))
-							.addGap(6)))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPane_Cliente, GroupLayout.PREFERRED_SIZE, 339, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
 		
 		table_Cliente = new JTable();
 		table_Cliente.addMouseListener(new MouseAdapter() {
@@ -482,354 +381,54 @@ public class Tela_Cadastro extends JFrame {
 			}
 		));
 		scrollPane_Cliente.setViewportView(table_Cliente);
-		painel_Cliente.setLayout(gl_painel_Cliente);
+		painel_Cliente.setLayout(null);
+		painel_Cliente.add(lblCadastro_Cliente);
+		painel_Cliente.add(btnNovo_Cliente);
+		painel_Cliente.add(btnEditar_Cliente);
+		painel_Cliente.add(btnCancelar_Cliente);
+		painel_Cliente.add(btnDeletar_Cliente);
+		painel_Cliente.add(lblIdade_Cliente);
+		painel_Cliente.add(lblEndereco_Cliente);
+		painel_Cliente.add(lblCPF_Cliente);
+		painel_Cliente.add(lblNome_Cliente);
+		painel_Cliente.add(textCPF_Cliente);
+		painel_Cliente.add(textNome_Cliente);
+		painel_Cliente.add(lblCidade_Cliente);
+		painel_Cliente.add(lblNumCasa_Cliente);
+		painel_Cliente.add(textIdade_Cliente);
+		painel_Cliente.add(textEndereco_Cliente);
+		painel_Cliente.add(lblID_Cliente);
+		painel_Cliente.add(lblEstado_Cliente);
+		painel_Cliente.add(textNumCasa_Cliente);
+		painel_Cliente.add(textCidade_Cliente);
+		painel_Cliente.add(textEstado_Cliente);
+		painel_Cliente.add(textID_Cliente);
+		painel_Cliente.add(scrollPane_Cliente);
+		painel_Cliente.add(lblBuscar_Cliente);
+		painel_Cliente.add(btnBuscar_Cliente);
+		painel_Cliente.add(btnSalvar_Cliente);
+		painel_Cliente.add(btnLimpar_Cliente);
+		painel_Cliente.add(btnAtualizar_Cliente);
+		
+		JLabel lblBackground_Cliente = new JLabel("");
+		lblBackground_Cliente.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/background.jpg")));
+		lblBackground_Cliente.setBounds(0, 0, 1250, 705);
+		painel_Cliente.add(lblBackground_Cliente);
 		/* Fim da tela do Cliente */
 		
 		/* Inicio da tela do Fornecedor */
-		JPanel painel_Fornecedor = new JPanel();
-		painel_Fornecedor.setBorder(new LineBorder(new Color(0, 0, 0)));
-		painel_Fornecedor.setBackground(Color.LIGHT_GRAY);
-		tabbedPane_FarmaciaSoft.addTab("Fornecedor", null, painel_Fornecedor, null);
-		
-		JLabel lblCadastro_Fornecedor = new JLabel("Cadastro de Fornecedor");
-		lblCadastro_Fornecedor.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCadastro_Fornecedor.setFont(new Font("Calibri", Font.BOLD, 20));
-		
-		JButton btnNovo_Fornecedor = new JButton("Novo");
-		btnNovo_Fornecedor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				textEmpresa_Fornecedor.setEditable(true);
-				textCidade_Fornecedor.setEditable(true);
-				textCNPJ_Fornecedor.setEditable(true);
-				textEndereco_Fornecedor.setEditable(true);
-				textEstado_Fornecedor.setEditable(true);
-				textNum_Fornecedor.setEditable(true);
-			}
-		});
-		btnNovo_Fornecedor.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/plus.png")));
-		btnNovo_Fornecedor.setBackground(Color.WHITE);
-		btnNovo_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 13));
-		
-		JButton btnEditar_Fornecedor = new JButton("Editar");
-		btnEditar_Fornecedor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				textEmpresa_Fornecedor.setEditable(true);
-				textCidade_Fornecedor.setEditable(true);
-				textCNPJ_Fornecedor.setEditable(true);
-				textEndereco_Fornecedor.setEditable(true);
-				textEstado_Fornecedor.setEditable(true);
-				textNum_Fornecedor.setEditable(true);
-			}
-		});
-		btnEditar_Fornecedor.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/Gear.png")));
-		btnEditar_Fornecedor.setBackground(Color.WHITE);
-		btnEditar_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 13));
-		
-		JButton btnDeletar_Fornecedor = new JButton("Deletar");
-		btnDeletar_Fornecedor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FornecedorEntity fornecedorSelecionado = fornecedores.get(table_Fornecedor.getSelectedRow());
-				if (JOptionPane.showConfirmDialog(null, "Você realmente deseja excluir o fornecedor de código " + fornecedorSelecionado.getCodigo()) == JOptionPane.OK_OPTION) {
-					try {
-						new FornecedorService().excluirFornecedor(fornecedorSelecionado.getCodigo());
-					} catch (BusinessException e1) {
-						JOptionPane.showMessageDialog(null, e1.getErro());
-					}
-				}
-			}
-		});
-		
-		btnDeletar_Fornecedor.setEnabled(false);
-		btnDeletar_Fornecedor.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/delete.png")));
-		btnDeletar_Fornecedor.setBackground(Color.WHITE);
-		btnDeletar_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 13));
-		
-		JButton btnCancelar_Fornecedor = new JButton("Cancelar");
-		btnCancelar_Fornecedor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				textEmpresa_Fornecedor.setEditable(false);
-				textCidade_Fornecedor.setEditable(false);
-				textCNPJ_Fornecedor.setEditable(false);
-				textEndereco_Fornecedor.setEditable(false);
-				textEstado_Fornecedor.setEditable(false);
-				textNum_Fornecedor.setEditable(false);
-				btnDeletar_Fornecedor.setEnabled(false);
-			}
-		});
-		btnCancelar_Fornecedor.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/cancel.png")));
-		btnCancelar_Fornecedor.setBackground(Color.WHITE);
-		btnCancelar_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 13));
-		
-		JLabel lblEmpresa_Fornecedor = new JLabel("Nome da empresa:");
-		lblEmpresa_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
-		
-		JLabel lblCNPJ_Fornecedor = new JLabel("CNPJ:");
-		lblCNPJ_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
-		
-		JLabel lblEndereco_Fornecedor = new JLabel("Endere\u00E7o:");
-		lblEndereco_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
-		
-		JLabel lblNum_Fornecedor = new JLabel("N\u00FAmero:");
-		lblNum_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
-		
-		textEmpresa_Fornecedor = new JTextField();
-		textEmpresa_Fornecedor.setEditable(false);
-		textEmpresa_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
-		textEmpresa_Fornecedor.setColumns(10);
-		
-		textCNPJ_Fornecedor = new JTextField();
-		textCNPJ_Fornecedor.setEditable(false);
-		textCNPJ_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
-		textCNPJ_Fornecedor.setColumns(10);
-		
-		textEndereco_Fornecedor = new JTextField();
-		textEndereco_Fornecedor.setEditable(false);
-		textEndereco_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
-		textEndereco_Fornecedor.setColumns(10);
-		
-		textNum_Fornecedor = new JTextField();
-		textNum_Fornecedor.setEditable(false);
-		textNum_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
-		textNum_Fornecedor.setColumns(10);
-		
-		JLabel lblCidade_Fornecedor = new JLabel("Cidade:");
-		lblCidade_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
-		
-		JLabel lblEstado_Fornecedor = new JLabel("Estado:");
-		lblEstado_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
-		
-		JLabel lblID_Fornecedor = new JLabel("ID:");
-		lblID_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
-		
-		textID_Fornecedor = new JTextField();
-		textID_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
-		textID_Fornecedor.setColumns(10);
-		
-		textEstado_Fornecedor = new JTextField();
-		textEstado_Fornecedor.setEditable(false);
-		textEstado_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
-		textEstado_Fornecedor.setColumns(10);
-		
-		textCidade_Fornecedor = new JTextField();
-		textCidade_Fornecedor.setEditable(false);
-		textCidade_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
-		textCidade_Fornecedor.setColumns(10);
-		
-		JButton btnSalvar_Fornecedor = new JButton("Salvar Cadastro");
-		btnSalvar_Fornecedor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FornecedorEntity fornecedor = new FornecedorEntity();
-				fornecedor.setNome(textEmpresa_Fornecedor.getText());
-				fornecedor.setCnpj(textCNPJ_Fornecedor.getText());
-				fornecedor.setNum(Integer.parseInt(textNum_Fornecedor.getText()));
-				fornecedor.setEndereco(textEndereco_Fornecedor.getText());
-				fornecedor.setCidade(textCidade_Fornecedor.getText());
-				fornecedor.setEstado(textEstado_Fornecedor.getText());
-				
-				@SuppressWarnings("unused")
-				String msg = null;
-				try { 
-					if(textID_Fornecedor.getText().equals("")) {
-						msg = new FornecedorService().salvarFornecedor(fornecedor);
-						JOptionPane.showMessageDialog(null, "Fornecedor salvo!");
-					}else {
-						fornecedor.setCodigo(Long.parseLong(textID_Fornecedor.getText()));
-						msg = new FornecedorService().alterarFornecedor(fornecedor);
-						JOptionPane.showMessageDialog(null, "Fornecedor Alterado!");
-					}
-				} catch (BusinessException e1) {
-					JOptionPane.showMessageDialog(null, e1.getErro());
-				}
-			}
-		});
-		btnSalvar_Fornecedor.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/floppy disk.png")));
-		btnSalvar_Fornecedor.setBackground(Color.WHITE);
-		btnSalvar_Fornecedor.setFont(new Font("Calibri", Font.BOLD, 13));
-		
-		JButton btnLimpar_Fornecedor = new JButton("Limpar Formul\u00E1rio");
-		btnLimpar_Fornecedor.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/clear.png")));
-		btnLimpar_Fornecedor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				textCidade_Fornecedor.setText("");
-				textCNPJ_Fornecedor.setText("");
-				textEmpresa_Fornecedor.setText("");
-				textEndereco_Fornecedor.setText("");
-				textEstado_Fornecedor.setText("");
-				textID_Fornecedor.setText("");
-				textNum_Fornecedor.setText("");
-			}
-		});
-		btnLimpar_Fornecedor.setBackground(Color.WHITE);
-		btnLimpar_Fornecedor.setFont(new Font("Calibri", Font.BOLD, 13));
-		
-		JButton btnAtualizar_Fornecedor = new JButton("Atualizar Tabela");
-		btnAtualizar_Fornecedor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				instanciarTabelaForne();
-			}
-		});
-		btnAtualizar_Fornecedor.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/refresh.png")));
-		btnAtualizar_Fornecedor.setBackground(Color.WHITE);
-		btnAtualizar_Fornecedor.setFont(new Font("Calibri", Font.BOLD, 13));
-		
-		JScrollPane scrollPane_Fornecedor = new JScrollPane();
-		
-		JLabel lblBuscar_Fornecedor = new JLabel("Procurar por ID:");
-		lblBuscar_Fornecedor.setFont(new Font("Calibri", Font.BOLD, 14));
-		
-		JButton btnOk_Fornecedor = new JButton("Ok");
-		btnOk_Fornecedor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				carregarFornecedor(textID_Fornecedor.getText());
-			}
-		});
-		btnOk_Fornecedor.setBackground(Color.WHITE);
-		GroupLayout gl_painel_Fornecedor = new GroupLayout(painel_Fornecedor);
-		gl_painel_Fornecedor.setHorizontalGroup(
-			gl_painel_Fornecedor.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_painel_Fornecedor.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_painel_Fornecedor.createSequentialGroup()
-								.addComponent(lblBuscar_Fornecedor, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(btnOk_Fornecedor)
-								.addGap(229)
-								.addComponent(btnSalvar_Fornecedor)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(btnLimpar_Fornecedor)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(btnAtualizar_Fornecedor)
-								.addContainerGap(381, Short.MAX_VALUE))
-							.addGroup(Alignment.TRAILING, gl_painel_Fornecedor.createSequentialGroup()
-								.addComponent(lblCadastro_Fornecedor)
-								.addGap(500))
-							.addGroup(Alignment.TRAILING, gl_painel_Fornecedor.createSequentialGroup()
-								.addComponent(btnNovo_Fornecedor, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(btnEditar_Fornecedor, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(btnCancelar_Fornecedor)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(btnDeletar_Fornecedor)
-								.addGap(401))
-							.addGroup(gl_painel_Fornecedor.createSequentialGroup()
-								.addComponent(scrollPane_Fornecedor, GroupLayout.DEFAULT_SIZE, 1183, Short.MAX_VALUE)
-								.addContainerGap()))
-						.addGroup(Alignment.TRAILING, gl_painel_Fornecedor.createSequentialGroup()
-							.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblNum_Fornecedor)
-								.addComponent(lblEndereco_Fornecedor)
-								.addComponent(lblCNPJ_Fornecedor)
-								.addComponent(lblEmpresa_Fornecedor))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.LEADING)
-								.addComponent(textEmpresa_Fornecedor, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textNum_Fornecedor, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textEndereco_Fornecedor, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textCNPJ_Fornecedor, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblID_Fornecedor)
-								.addComponent(lblEstado_Fornecedor)
-								.addComponent(lblCidade_Fornecedor))
-							.addGap(24)
-							.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.LEADING)
-								.addComponent(textCidade_Fornecedor, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textEstado_Fornecedor, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textID_Fornecedor, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE))
-							.addGap(276))))
-		);
-		gl_painel_Fornecedor.setVerticalGroup(
-			gl_painel_Fornecedor.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_painel_Fornecedor.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblCadastro_Fornecedor)
-					.addGap(28)
-					.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNovo_Fornecedor)
-						.addComponent(btnEditar_Fornecedor)
-						.addComponent(btnCancelar_Fornecedor)
-						.addComponent(btnDeletar_Fornecedor))
-					.addGap(11)
-					.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_painel_Fornecedor.createSequentialGroup()
-							.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textEmpresa_Fornecedor, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblEmpresa_Fornecedor))
-							.addGap(6)
-							.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textCNPJ_Fornecedor, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblCNPJ_Fornecedor))
-							.addGap(6)
-							.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textEndereco_Fornecedor, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblEndereco_Fornecedor))
-							.addGap(6)
-							.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textNum_Fornecedor, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblNum_Fornecedor)))
-						.addGroup(gl_painel_Fornecedor.createSequentialGroup()
-							.addGap(3)
-							.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textCidade_Fornecedor, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblCidade_Fornecedor))
-							.addGap(6)
-							.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textEstado_Fornecedor, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblEstado_Fornecedor))
-							.addGap(6)
-							.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textID_Fornecedor, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblID_Fornecedor))))
-					.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-					.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_painel_Fornecedor.createSequentialGroup()
-							.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblBuscar_Fornecedor, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnOk_Fornecedor))
-							.addPreferredGap(ComponentPlacement.RELATED))
-						.addGroup(Alignment.TRAILING, gl_painel_Fornecedor.createSequentialGroup()
-							.addGroup(gl_painel_Fornecedor.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnSalvar_Fornecedor)
-								.addComponent(btnLimpar_Fornecedor)
-								.addComponent(btnAtualizar_Fornecedor))
-							.addGap(6)))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPane_Fornecedor, GroupLayout.PREFERRED_SIZE, 351, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
-		
-		table_Fornecedor = new JTable();
-		table_Fornecedor.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				btnDeletar_Fornecedor.setEnabled(true);
-			}
-		});
-		table_Fornecedor.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"ID", "Empresa", "CNPJ", "Endere\u00E7o", "N\u00FAmero", "Cidade", "Estado"
-			}
-		));
-		scrollPane_Fornecedor.setViewportView(table_Fornecedor);
-		painel_Fornecedor.setLayout(gl_painel_Fornecedor);
-		/* Fim da tela do Fornecedor */
-		
-		/* Inicio da tela do Funcionario */
 		JPanel painel_Funcionario = new JPanel();
 		painel_Funcionario.setBorder(new LineBorder(new Color(0, 0, 0)));
 		painel_Funcionario.setBackground(Color.LIGHT_GRAY);
 		tabbedPane_FarmaciaSoft.addTab("Funcionario", null, painel_Funcionario, null);
 		
 		JLabel lblCadastro_Funcionario = new JLabel("Cadastro de Funcion\u00E1rio");
+		lblCadastro_Funcionario.setBounds(520, 12, 205, 25);
 		lblCadastro_Funcionario.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCadastro_Funcionario.setFont(new Font("Calibri", Font.BOLD, 20));
 		
 		JButton btnNovo_Funcionario = new JButton("Novo");
+		btnNovo_Funcionario.setBounds(410, 59, 105, 25);
 		btnNovo_Funcionario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textCargo_Funcionario.setEditable(true);
@@ -849,6 +448,7 @@ public class Tela_Cadastro extends JFrame {
 		btnNovo_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 13));
 		
 		JButton btnEditar_Funcionario = new JButton("Editar");
+		btnEditar_Funcionario.setBounds(525, 59, 105, 25);
 		btnEditar_Funcionario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textCargo_Funcionario.setEditable(true);
@@ -868,6 +468,7 @@ public class Tela_Cadastro extends JFrame {
 		btnEditar_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 13));
 		
 		JButton btnDeletar_Funcionario = new JButton("Deletar");
+		btnDeletar_Funcionario.setBounds(755, 59, 105, 25);
 		btnDeletar_Funcionario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FuncionarioEntity funcionarioSelecionado = funcionarios.get(table_Funcionario.getSelectedRow());
@@ -886,6 +487,7 @@ public class Tela_Cadastro extends JFrame {
 		btnDeletar_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 13));
 		
 		JButton btnCancelar_Funcionario = new JButton("Cancelar");
+		btnCancelar_Funcionario.setBounds(640, 59, 105, 25);
 		btnCancelar_Funcionario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textCargo_Funcionario.setEditable(false);
@@ -906,69 +508,86 @@ public class Tela_Cadastro extends JFrame {
 		btnCancelar_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 13));
 		
 		JLabel lblNome_Funcionario = new JLabel("Nome:");
+		lblNome_Funcionario.setBounds(312, 131, 38, 18);
 		lblNome_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		JLabel lblCPF_Funcionario = new JLabel("CPF:");
+		lblCPF_Funcionario.setBounds(312, 161, 24, 18);
 		lblCPF_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		JLabel lblIdade_Funcionario = new JLabel("Idade:");
+		lblIdade_Funcionario.setBounds(312, 191, 36, 18);
 		lblIdade_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		JLabel lblEndereco_Funcionario = new JLabel("Endere\u00E7o:");
+		lblEndereco_Funcionario.setBounds(312, 221, 57, 18);
 		lblEndereco_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		textNome_Funcionario = new JTextField();
+		textNome_Funcionario.setBounds(375, 129, 224, 24);
 		textNome_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textNome_Funcionario.setEditable(false);
 		textNome_Funcionario.setColumns(10);
 		
 		textCPF_Funcionario = new JTextField();
+		textCPF_Funcionario.setBounds(375, 159, 224, 24);
 		textCPF_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textCPF_Funcionario.setEditable(false);
 		textCPF_Funcionario.setColumns(10);
 		
 		textIdade_Funcionario = new JTextField();
+		textIdade_Funcionario.setBounds(375, 189, 224, 24);
 		textIdade_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textIdade_Funcionario.setEditable(false);
 		textIdade_Funcionario.setColumns(10);
 		
 		textEndereco_Funcionario = new JTextField();
+		textEndereco_Funcionario.setBounds(375, 219, 224, 24);
 		textEndereco_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textEndereco_Funcionario.setEditable(false);
 		textEndereco_Funcionario.setColumns(10);
 		
 		JLabel lblNumCasa_Funcionario = new JLabel("N\u00FAmero da casa:");
+		lblNumCasa_Funcionario.setBounds(609, 101, 95, 18);
 		lblNumCasa_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		JLabel lblCidade_Funcionario = new JLabel("Cidade:");
+		lblCidade_Funcionario.setBounds(609, 131, 42, 18);
 		lblCidade_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		JLabel lblEstado_Funcionario = new JLabel("Estado:");
+		lblEstado_Funcionario.setBounds(609, 161, 42, 18);
 		lblEstado_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		JLabel lblID_Funcionario = new JLabel("ID:");
+		lblID_Funcionario.setBounds(312, 101, 17, 18);
 		lblID_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		textNumCasa_Funcionario = new JTextField();
+		textNumCasa_Funcionario.setBounds(712, 99, 224, 24);
 		textNumCasa_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textNumCasa_Funcionario.setEditable(false);
 		textNumCasa_Funcionario.setColumns(10);
 		
 		textCidade_Funcionario = new JTextField();
+		textCidade_Funcionario.setBounds(712, 129, 224, 24);
 		textCidade_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textCidade_Funcionario.setEditable(false);
 		textCidade_Funcionario.setColumns(10);
 		
 		textEstado_Funcionario = new JTextField();
+		textEstado_Funcionario.setBounds(712, 159, 224, 24);
 		textEstado_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textEstado_Funcionario.setEditable(false);
 		textEstado_Funcionario.setColumns(10);
 		
 		textID_Funcionario = new JTextField();
+		textID_Funcionario.setBounds(375, 99, 224, 24);
 		textID_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textID_Funcionario.setColumns(10);
 		
 		JButton btnSalvar_Funcionario = new JButton("Salvar Cadastro");
+		btnSalvar_Funcionario.setBounds(376, 284, 160, 25);
 		btnSalvar_Funcionario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FuncionarioEntity funcionario = new FuncionarioEntity();
@@ -1004,6 +623,7 @@ public class Tela_Cadastro extends JFrame {
 		btnSalvar_Funcionario.setFont(new Font("Calibri", Font.BOLD, 13));
 		
 		JButton btnLimpar_Funcionario = new JButton("Limpar Formul\u00E1rio");
+		btnLimpar_Funcionario.setBounds(546, 284, 160, 25);
 		btnLimpar_Funcionario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textCargo_Funcionario.setText("");
@@ -1024,6 +644,7 @@ public class Tela_Cadastro extends JFrame {
 		btnLimpar_Funcionario.setFont(new Font("Calibri", Font.BOLD, 13));
 		
 		JButton btnAtualizar_Funcionario = new JButton("Atualizar Tabela");
+		btnAtualizar_Funcionario.setBounds(716, 284, 160, 25);
 		btnAtualizar_Funcionario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				instanciarTabelaFuncio();
@@ -1034,32 +655,41 @@ public class Tela_Cadastro extends JFrame {
 		btnAtualizar_Funcionario.setFont(new Font("Calibri", Font.BOLD, 13));
 		
 		JScrollPane scrollPane_Funcionario = new JScrollPane();
+		scrollPane_Funcionario.setBounds(11, 320, 1224, 346);
 		
 		JLabel lblCargo_Funcionario = new JLabel("Cargo:");
+		lblCargo_Funcionario.setBounds(609, 191, 37, 18);
 		lblCargo_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		textCargo_Funcionario = new JTextField();
+		textCargo_Funcionario.setBounds(712, 189, 224, 24);
 		textCargo_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textCargo_Funcionario.setEditable(false);
 		textCargo_Funcionario.setColumns(10);
 		
 		JLabel lblLoja_Funcionario = new JLabel("Loja:");
+		lblLoja_Funcionario.setBounds(609, 221, 56, 18);
 		lblLoja_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		textLoja_Funcionario = new JTextField();
+		textLoja_Funcionario.setBounds(712, 219, 224, 24);
 		textLoja_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textLoja_Funcionario.setEditable(false);
 		textLoja_Funcionario.setColumns(10);
 		
 		JLabel lblSalario_Funcionario = new JLabel("Sal\u00E1rio:");
+		lblSalario_Funcionario.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSalario_Funcionario.setBounds(439, 252, 56, 18);
 		lblSalario_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		textSalario_Funcionario = new JTextField();
+		textSalario_Funcionario.setBounds(510, 249, 224, 24);
 		textSalario_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textSalario_Funcionario.setEditable(false);
 		textSalario_Funcionario.setColumns(10);
 		
 		JLabel lblBuscar_Funcionario = new JLabel("Procurar por ID:");
+		lblBuscar_Funcionario.setBounds(11, 289, 95, 18);
 		lblBuscar_Funcionario.setFont(new Font("Calibri", Font.BOLD, 14));
 		
 		table_Funcionario = new JTable();
@@ -1079,181 +709,327 @@ public class Tela_Cadastro extends JFrame {
 		scrollPane_Funcionario.setViewportView(table_Funcionario);
 		
 		JButton btnOk_Funcionario = new JButton("Ok");
+		btnOk_Funcionario.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 11));
+		btnOk_Funcionario.setBounds(110, 284, 50, 25);
 		btnOk_Funcionario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				carregarFuncionario(textID_Funcionario.getText());
 			}
 		});
 		btnOk_Funcionario.setBackground(Color.WHITE);
-		GroupLayout gl_painel_Funcionario = new GroupLayout(painel_Funcionario);
-		gl_painel_Funcionario.setHorizontalGroup(
-			gl_painel_Funcionario.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_painel_Funcionario.createSequentialGroup()
-					.addGroup(gl_painel_Funcionario.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(lblBuscar_Funcionario)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnOk_Funcionario)
-							.addGap(229)
-							.addComponent(btnSalvar_Funcionario)
-							.addGap(6)
-							.addComponent(btnLimpar_Funcionario)
-							.addGap(6)
-							.addComponent(btnAtualizar_Funcionario))
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addGap(11)
-							.addComponent(scrollPane_Funcionario, GroupLayout.DEFAULT_SIZE, 1182, Short.MAX_VALUE)))
-					.addContainerGap())
-				.addGroup(gl_painel_Funcionario.createSequentialGroup()
-					.addContainerGap(500, Short.MAX_VALUE)
-					.addComponent(lblCadastro_Funcionario)
-					.addGap(498))
-				.addGroup(gl_painel_Funcionario.createSequentialGroup()
-					.addContainerGap(413, Short.MAX_VALUE)
-					.addComponent(btnNovo_Funcionario)
-					.addGap(6)
-					.addComponent(btnEditar_Funcionario)
-					.addGap(6)
-					.addComponent(btnCancelar_Funcionario)
-					.addGap(6)
-					.addComponent(btnDeletar_Funcionario)
-					.addGap(412))
-				.addGroup(gl_painel_Funcionario.createSequentialGroup()
-					.addContainerGap(290, Short.MAX_VALUE)
-					.addGroup(gl_painel_Funcionario.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addComponent(lblNome_Funcionario)
-							.addGap(23)
-							.addComponent(textNome_Funcionario, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(lblNumCasa_Funcionario)
-							.addGap(10)
-							.addComponent(textNumCasa_Funcionario, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addComponent(lblCPF_Funcionario)
-							.addGap(37)
-							.addComponent(textCPF_Funcionario, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(lblCidade_Funcionario)
-							.addGap(63)
-							.addComponent(textCidade_Funcionario, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addComponent(lblIdade_Funcionario)
-							.addGap(25)
-							.addComponent(textIdade_Funcionario, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(lblEstado_Funcionario)
-							.addGap(63)
-							.addComponent(textEstado_Funcionario, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addComponent(lblEndereco_Funcionario)
-							.addGap(4)
-							.addComponent(textEndereco_Funcionario, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(lblID_Funcionario)
-							.addGap(88)
-							.addComponent(textID_Funcionario, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addComponent(lblCargo_Funcionario)
-							.addGap(24)
-							.addComponent(textCargo_Funcionario, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(lblLoja_Funcionario, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
-							.addGap(49)
-							.addComponent(textLoja_Funcionario, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)))
-					.addGap(289))
-				.addGroup(gl_painel_Funcionario.createSequentialGroup()
-					.addContainerGap(460, Short.MAX_VALUE)
-					.addComponent(lblSalario_Funcionario, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
-					.addGap(4)
-					.addComponent(textSalario_Funcionario, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-					.addGap(459))
-		);
-		gl_painel_Funcionario.setVerticalGroup(
-			gl_painel_Funcionario.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_painel_Funcionario.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblCadastro_Funcionario)
-					.addGap(13)
-					.addGroup(gl_painel_Funcionario.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNovo_Funcionario)
-						.addComponent(btnEditar_Funcionario)
-						.addComponent(btnCancelar_Funcionario)
-						.addComponent(btnDeletar_Funcionario))
-					.addGap(11)
-					.addGroup(gl_painel_Funcionario.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblNome_Funcionario))
-						.addComponent(textNome_Funcionario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblNumCasa_Funcionario))
-						.addComponent(textNumCasa_Funcionario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(6)
-					.addGroup(gl_painel_Funcionario.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblCPF_Funcionario))
-						.addComponent(textCPF_Funcionario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblCidade_Funcionario))
-						.addComponent(textCidade_Funcionario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(6)
-					.addGroup(gl_painel_Funcionario.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblIdade_Funcionario))
-						.addComponent(textIdade_Funcionario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblEstado_Funcionario))
-						.addComponent(textEstado_Funcionario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(6)
-					.addGroup(gl_painel_Funcionario.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblEndereco_Funcionario))
-						.addComponent(textEndereco_Funcionario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblID_Funcionario))
-						.addComponent(textID_Funcionario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(6)
-					.addGroup(gl_painel_Funcionario.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblCargo_Funcionario))
-						.addComponent(textCargo_Funcionario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblLoja_Funcionario))
-						.addComponent(textLoja_Funcionario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_painel_Funcionario.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblSalario_Funcionario))
-						.addComponent(textSalario_Funcionario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-					.addGroup(gl_painel_Funcionario.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addGroup(gl_painel_Funcionario.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblBuscar_Funcionario)
-								.addComponent(btnOk_Funcionario))
-							.addPreferredGap(ComponentPlacement.UNRELATED))
-						.addGroup(gl_painel_Funcionario.createSequentialGroup()
-							.addGroup(gl_painel_Funcionario.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnSalvar_Funcionario)
-								.addComponent(btnLimpar_Funcionario)
-								.addComponent(btnAtualizar_Funcionario))
-							.addGap(11)))
-					.addComponent(scrollPane_Funcionario, GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		painel_Funcionario.setLayout(gl_painel_Funcionario);
+		painel_Funcionario.setLayout(null);
+		painel_Funcionario.add(lblBuscar_Funcionario);
+		painel_Funcionario.add(btnOk_Funcionario);
+		painel_Funcionario.add(btnSalvar_Funcionario);
+		painel_Funcionario.add(btnLimpar_Funcionario);
+		painel_Funcionario.add(btnAtualizar_Funcionario);
+		painel_Funcionario.add(scrollPane_Funcionario);
+		painel_Funcionario.add(lblCadastro_Funcionario);
+		painel_Funcionario.add(btnNovo_Funcionario);
+		painel_Funcionario.add(btnEditar_Funcionario);
+		painel_Funcionario.add(btnCancelar_Funcionario);
+		painel_Funcionario.add(btnDeletar_Funcionario);
+		painel_Funcionario.add(lblNome_Funcionario);
+		painel_Funcionario.add(textNome_Funcionario);
+		painel_Funcionario.add(lblNumCasa_Funcionario);
+		painel_Funcionario.add(textNumCasa_Funcionario);
+		painel_Funcionario.add(lblCPF_Funcionario);
+		painel_Funcionario.add(textCPF_Funcionario);
+		painel_Funcionario.add(lblCidade_Funcionario);
+		painel_Funcionario.add(textCidade_Funcionario);
+		painel_Funcionario.add(lblIdade_Funcionario);
+		painel_Funcionario.add(textIdade_Funcionario);
+		painel_Funcionario.add(lblEstado_Funcionario);
+		painel_Funcionario.add(textEstado_Funcionario);
+		painel_Funcionario.add(lblEndereco_Funcionario);
+		painel_Funcionario.add(textEndereco_Funcionario);
+		painel_Funcionario.add(lblID_Funcionario);
+		painel_Funcionario.add(textID_Funcionario);
+		painel_Funcionario.add(lblCargo_Funcionario);
+		painel_Funcionario.add(textCargo_Funcionario);
+		painel_Funcionario.add(lblLoja_Funcionario);
+		painel_Funcionario.add(textLoja_Funcionario);
+		painel_Funcionario.add(lblSalario_Funcionario);
+		painel_Funcionario.add(textSalario_Funcionario);
+		
+		JLabel lblBackground_Funcionario = new JLabel("");
+		lblBackground_Funcionario.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/background.jpg")));
+		lblBackground_Funcionario.setBounds(0, 0, 1250, 705);
+		painel_Funcionario.add(lblBackground_Funcionario);
+		JPanel painel_Fornecedor = new JPanel();
+		painel_Fornecedor.setBorder(new LineBorder(new Color(0, 0, 0)));
+		painel_Fornecedor.setBackground(Color.LIGHT_GRAY);
+		tabbedPane_FarmaciaSoft.addTab("Fornecedor", null, painel_Fornecedor, null);
+		
+		JLabel lblCadastro_Fornecedor = new JLabel("Cadastro de Fornecedor");
+		lblCadastro_Fornecedor.setBounds(522, 12, 201, 25);
+		lblCadastro_Fornecedor.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastro_Fornecedor.setFont(new Font("Calibri", Font.BOLD, 20));
+		
+		JButton btnNovo_Fornecedor = new JButton("Novo");
+		btnNovo_Fornecedor.setBounds(410, 59, 105, 25);
+		btnNovo_Fornecedor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textEmpresa_Fornecedor.setEditable(true);
+				textCidade_Fornecedor.setEditable(true);
+				textCNPJ_Fornecedor.setEditable(true);
+				textEndereco_Fornecedor.setEditable(true);
+				textEstado_Fornecedor.setEditable(true);
+				textNum_Fornecedor.setEditable(true);
+			}
+		});
+		btnNovo_Fornecedor.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/plus.png")));
+		btnNovo_Fornecedor.setBackground(Color.WHITE);
+		btnNovo_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 13));
+		
+		JButton btnEditar_Fornecedor = new JButton("Editar");
+		btnEditar_Fornecedor.setBounds(525, 59, 105, 25);
+		btnEditar_Fornecedor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textEmpresa_Fornecedor.setEditable(true);
+				textCidade_Fornecedor.setEditable(true);
+				textCNPJ_Fornecedor.setEditable(true);
+				textEndereco_Fornecedor.setEditable(true);
+				textEstado_Fornecedor.setEditable(true);
+				textNum_Fornecedor.setEditable(true);
+			}
+		});
+		btnEditar_Fornecedor.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/Gear.png")));
+		btnEditar_Fornecedor.setBackground(Color.WHITE);
+		btnEditar_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 13));
+		
+		JButton btnDeletar_Fornecedor = new JButton("Deletar");
+		btnDeletar_Fornecedor.setBounds(755, 59, 105, 25);
+		btnDeletar_Fornecedor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FornecedorEntity fornecedorSelecionado = fornecedores.get(table_Fornecedor.getSelectedRow());
+				if (JOptionPane.showConfirmDialog(null, "Você realmente deseja excluir o fornecedor de código " + fornecedorSelecionado.getCodigo()) == JOptionPane.OK_OPTION) {
+					try {
+						new FornecedorService().excluirFornecedor(fornecedorSelecionado.getCodigo());
+					} catch (BusinessException e1) {
+						JOptionPane.showMessageDialog(null, e1.getErro());
+					}
+				}
+			}
+		});
+		
+		btnDeletar_Fornecedor.setEnabled(false);
+		btnDeletar_Fornecedor.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/delete.png")));
+		btnDeletar_Fornecedor.setBackground(Color.WHITE);
+		btnDeletar_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 13));
+		
+		JButton btnCancelar_Fornecedor = new JButton("Cancelar");
+		btnCancelar_Fornecedor.setBounds(640, 59, 105, 25);
+		btnCancelar_Fornecedor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textEmpresa_Fornecedor.setEditable(false);
+				textCidade_Fornecedor.setEditable(false);
+				textCNPJ_Fornecedor.setEditable(false);
+				textEndereco_Fornecedor.setEditable(false);
+				textEstado_Fornecedor.setEditable(false);
+				textNum_Fornecedor.setEditable(false);
+				btnDeletar_Fornecedor.setEnabled(false);
+			}
+		});
+		btnCancelar_Fornecedor.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/cancel.png")));
+		btnCancelar_Fornecedor.setBackground(Color.WHITE);
+		btnCancelar_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 13));
+		
+		JLabel lblEmpresa_Fornecedor = new JLabel("Nome da empresa:");
+		lblEmpresa_Fornecedor.setBounds(256, 132, 107, 18);
+		lblEmpresa_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
+		
+		JLabel lblCNPJ_Fornecedor = new JLabel("CNPJ:");
+		lblCNPJ_Fornecedor.setBounds(256, 162, 31, 18);
+		lblCNPJ_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
+		
+		JLabel lblEndereco_Fornecedor = new JLabel("Endere\u00E7o:");
+		lblEndereco_Fornecedor.setBounds(256, 192, 57, 18);
+		lblEndereco_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
+		
+		JLabel lblNum_Fornecedor = new JLabel("N\u00FAmero:");
+		lblNum_Fornecedor.setBounds(256, 222, 50, 18);
+		lblNum_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
+		
+		textEmpresa_Fornecedor = new JTextField();
+		textEmpresa_Fornecedor.setBounds(373, 129, 224, 24);
+		textEmpresa_Fornecedor.setEditable(false);
+		textEmpresa_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
+		textEmpresa_Fornecedor.setColumns(10);
+		
+		textCNPJ_Fornecedor = new JTextField();
+		textCNPJ_Fornecedor.setBounds(373, 159, 224, 24);
+		textCNPJ_Fornecedor.setEditable(false);
+		textCNPJ_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
+		textCNPJ_Fornecedor.setColumns(10);
+		
+		textEndereco_Fornecedor = new JTextField();
+		textEndereco_Fornecedor.setBounds(373, 189, 224, 24);
+		textEndereco_Fornecedor.setEditable(false);
+		textEndereco_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
+		textEndereco_Fornecedor.setColumns(10);
+		
+		textNum_Fornecedor = new JTextField();
+		textNum_Fornecedor.setBounds(373, 219, 224, 24);
+		textNum_Fornecedor.setEditable(false);
+		textNum_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
+		textNum_Fornecedor.setColumns(10);
+		
+		JLabel lblCidade_Fornecedor = new JLabel("Cidade:");
+		lblCidade_Fornecedor.setBounds(609, 101, 42, 18);
+		lblCidade_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
+		
+		JLabel lblEstado_Fornecedor = new JLabel("Estado:");
+		lblEstado_Fornecedor.setBounds(609, 132, 42, 18);
+		lblEstado_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
+		
+		JLabel lblID_Fornecedor = new JLabel("ID:");
+		lblID_Fornecedor.setBounds(256, 101, 17, 18);
+		lblID_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
+		
+		textID_Fornecedor = new JTextField();
+		textID_Fornecedor.setBounds(375, 99, 224, 24);
+		textID_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
+		textID_Fornecedor.setColumns(10);
+		
+		textEstado_Fornecedor = new JTextField();
+		textEstado_Fornecedor.setBounds(712, 129, 224, 24);
+		textEstado_Fornecedor.setEditable(false);
+		textEstado_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
+		textEstado_Fornecedor.setColumns(10);
+		
+		textCidade_Fornecedor = new JTextField();
+		textCidade_Fornecedor.setBounds(712, 99, 224, 24);
+		textCidade_Fornecedor.setEditable(false);
+		textCidade_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
+		textCidade_Fornecedor.setColumns(10);
+		
+		JButton btnSalvar_Fornecedor = new JButton("Salvar Cadastro");
+		btnSalvar_Fornecedor.setBounds(376, 284, 160, 25);
+		btnSalvar_Fornecedor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FornecedorEntity fornecedor = new FornecedorEntity();
+				fornecedor.setNome(textEmpresa_Fornecedor.getText());
+				fornecedor.setCnpj(textCNPJ_Fornecedor.getText());
+				fornecedor.setNum(Integer.parseInt(textNum_Fornecedor.getText()));
+				fornecedor.setEndereco(textEndereco_Fornecedor.getText());
+				fornecedor.setCidade(textCidade_Fornecedor.getText());
+				fornecedor.setEstado(textEstado_Fornecedor.getText());
+				
+				@SuppressWarnings("unused")
+				String msg = null;
+				try { 
+					if(textID_Fornecedor.getText().equals("")) {
+						msg = new FornecedorService().salvarFornecedor(fornecedor);
+						JOptionPane.showMessageDialog(null, "Fornecedor salvo!");
+					}else {
+						fornecedor.setCodigo(Long.parseLong(textID_Fornecedor.getText()));
+						msg = new FornecedorService().alterarFornecedor(fornecedor);
+						JOptionPane.showMessageDialog(null, "Fornecedor Alterado!");
+					}
+				} catch (BusinessException e1) {
+					JOptionPane.showMessageDialog(null, e1.getErro());
+				}
+			}
+		});
+		btnSalvar_Fornecedor.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/floppy disk.png")));
+		btnSalvar_Fornecedor.setBackground(Color.WHITE);
+		btnSalvar_Fornecedor.setFont(new Font("Calibri", Font.BOLD, 13));
+		
+		JButton btnLimpar_Fornecedor = new JButton("Limpar Formul\u00E1rio");
+		btnLimpar_Fornecedor.setBounds(546, 284, 160, 25);
+		btnLimpar_Fornecedor.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/clear.png")));
+		btnLimpar_Fornecedor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textCidade_Fornecedor.setText("");
+				textCNPJ_Fornecedor.setText("");
+				textEmpresa_Fornecedor.setText("");
+				textEndereco_Fornecedor.setText("");
+				textEstado_Fornecedor.setText("");
+				textID_Fornecedor.setText("");
+				textNum_Fornecedor.setText("");
+			}
+		});
+		btnLimpar_Fornecedor.setBackground(Color.WHITE);
+		btnLimpar_Fornecedor.setFont(new Font("Calibri", Font.BOLD, 13));
+		
+		JButton btnAtualizar_Fornecedor = new JButton("Atualizar Tabela");
+		btnAtualizar_Fornecedor.setBounds(716, 284, 160, 25);
+		btnAtualizar_Fornecedor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				instanciarTabelaForne();
+			}
+		});
+		btnAtualizar_Fornecedor.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/refresh.png")));
+		btnAtualizar_Fornecedor.setBackground(Color.WHITE);
+		btnAtualizar_Fornecedor.setFont(new Font("Calibri", Font.BOLD, 13));
+		
+		JScrollPane scrollPane_Fornecedor = new JScrollPane();
+		scrollPane_Fornecedor.setBounds(11, 320, 1224, 346);
+		
+		JLabel lblBuscar_Fornecedor = new JLabel("Procurar por ID:");
+		lblBuscar_Fornecedor.setBounds(11, 289, 95, 18);
+		lblBuscar_Fornecedor.setFont(new Font("Calibri", Font.BOLD, 14));
+		
+		JButton btnOk_Fornecedor = new JButton("Ok");
+		btnOk_Fornecedor.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 11));
+		btnOk_Fornecedor.setBounds(110, 284, 50, 25);
+		btnOk_Fornecedor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				carregarFornecedor(textID_Fornecedor.getText());
+			}
+		});
+		btnOk_Fornecedor.setBackground(Color.WHITE);
+		
+		table_Fornecedor = new JTable();
+		table_Fornecedor.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnDeletar_Fornecedor.setEnabled(true);
+			}
+		});
+		table_Fornecedor.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"ID", "Empresa", "CNPJ", "Endere\u00E7o", "N\u00FAmero", "Cidade", "Estado"
+			}
+		));
+		scrollPane_Fornecedor.setViewportView(table_Fornecedor);
+		painel_Fornecedor.setLayout(null);
+		painel_Fornecedor.add(lblBuscar_Fornecedor);
+		painel_Fornecedor.add(btnOk_Fornecedor);
+		painel_Fornecedor.add(btnSalvar_Fornecedor);
+		painel_Fornecedor.add(btnLimpar_Fornecedor);
+		painel_Fornecedor.add(btnAtualizar_Fornecedor);
+		painel_Fornecedor.add(lblCadastro_Fornecedor);
+		painel_Fornecedor.add(btnNovo_Fornecedor);
+		painel_Fornecedor.add(btnEditar_Fornecedor);
+		painel_Fornecedor.add(btnCancelar_Fornecedor);
+		painel_Fornecedor.add(btnDeletar_Fornecedor);
+		painel_Fornecedor.add(scrollPane_Fornecedor);
+		painel_Fornecedor.add(lblNum_Fornecedor);
+		painel_Fornecedor.add(lblEndereco_Fornecedor);
+		painel_Fornecedor.add(lblCNPJ_Fornecedor);
+		painel_Fornecedor.add(lblEmpresa_Fornecedor);
+		painel_Fornecedor.add(textEmpresa_Fornecedor);
+		painel_Fornecedor.add(textNum_Fornecedor);
+		painel_Fornecedor.add(textEndereco_Fornecedor);
+		painel_Fornecedor.add(textCNPJ_Fornecedor);
+		painel_Fornecedor.add(lblID_Fornecedor);
+		painel_Fornecedor.add(lblEstado_Fornecedor);
+		painel_Fornecedor.add(lblCidade_Fornecedor);
+		painel_Fornecedor.add(textCidade_Fornecedor);
+		painel_Fornecedor.add(textEstado_Fornecedor);
+		painel_Fornecedor.add(textID_Fornecedor);
+		
+		JLabel lblBackground_Fornecedor = new JLabel("");
+		lblBackground_Fornecedor.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/background.jpg")));
+		lblBackground_Fornecedor.setBounds(0, 0, 1250, 705);
+		painel_Fornecedor.add(lblBackground_Fornecedor);
+		/* Fim da tela do Fornecedor */
+		
+		/* Inicio da tela do Funcionario */
 		/* Fim da tela do Funcionario */
 		
 		/* Inicio da tela do Produto */
@@ -1263,12 +1039,15 @@ public class Tela_Cadastro extends JFrame {
 		tabbedPane_FarmaciaSoft.addTab("Produto", null, painel_Produtos, null);
 		
 		JLabel lblCadastro_Produto = new JLabel("Cadastro de Produtos");
+		lblCadastro_Produto.setBounds(531, 12, 183, 25);
 		lblCadastro_Produto.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCadastro_Produto.setFont(new Font("Calibri", Font.BOLD, 20));
 		
 		JScrollPane scrollPane_Produto = new JScrollPane();
+		scrollPane_Produto.setBounds(11, 320, 1224, 346);
 		
 		JButton btnNovo_Produto = new JButton("Novo");
+		btnNovo_Produto.setBounds(410, 59, 105, 25);
 		btnNovo_Produto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textProduto_Produto.setEditable(true);
@@ -1282,6 +1061,7 @@ public class Tela_Cadastro extends JFrame {
 		btnNovo_Produto.setFont(new Font("Calibri", Font.PLAIN, 13));
 		
 		JButton btnEditar_Produto = new JButton("Editar");
+		btnEditar_Produto.setBounds(525, 59, 105, 25);
 		btnEditar_Produto.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/Gear.png")));
 		btnEditar_Produto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1295,6 +1075,7 @@ public class Tela_Cadastro extends JFrame {
 		btnEditar_Produto.setFont(new Font("Calibri", Font.PLAIN, 13));
 		
 		JButton btnDeletar_Produto = new JButton("Deletar");
+		btnDeletar_Produto.setBounds(755, 59, 105, 25);
 		btnDeletar_Produto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ProdutoEntity produtoSelecionado = produtos.get(table_Produto.getSelectedRow());
@@ -1313,6 +1094,7 @@ public class Tela_Cadastro extends JFrame {
 		btnDeletar_Produto.setFont(new Font("Calibri", Font.PLAIN, 13));
 		
 		JButton btnCancelar_Produto = new JButton("Cancelar");
+		btnCancelar_Produto.setBounds(640, 59, 105, 25);
 		btnCancelar_Produto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textProduto_Produto.setEditable(false);
@@ -1327,45 +1109,56 @@ public class Tela_Cadastro extends JFrame {
 		btnCancelar_Produto.setFont(new Font("Calibri", Font.PLAIN, 13));
 		
 		JLabel lblVenda_Produto = new JLabel("Pre\u00E7o de venda:");
+		lblVenda_Produto.setBounds(275, 162, 90, 18);
 		lblVenda_Produto.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		JLabel lblCusto_Produto = new JLabel("Pre\u00E7o de custo:");
+		lblCusto_Produto.setBounds(609, 101, 86, 18);
 		lblCusto_Produto.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		JLabel lblCodigo_Produto = new JLabel("C\u00F3digo de barras:");
+		lblCodigo_Produto.setBounds(609, 132, 98, 18);
 		lblCodigo_Produto.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		JLabel lblProduto_Produto = new JLabel("Produto:");
+		lblProduto_Produto.setBounds(275, 132, 49, 18);
 		lblProduto_Produto.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		textID_Produto = new JTextField();
+		textID_Produto.setBounds(375, 99, 224, 24);
 		textID_Produto.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textID_Produto.setColumns(10);
 		
 		textCusto_Produto = new JTextField();
+		textCusto_Produto.setBounds(712, 99, 224, 24);
 		textCusto_Produto.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textCusto_Produto.setEditable(false);
 		textCusto_Produto.setColumns(10);
 		
 		textVenda_Produto = new JTextField();
+		textVenda_Produto.setBounds(375, 159, 224, 24);
 		textVenda_Produto.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textVenda_Produto.setEditable(false);
 		textVenda_Produto.setColumns(10);
 		
 		textProduto_Produto = new JTextField();
+		textProduto_Produto.setBounds(375, 129, 224, 24);
 		textProduto_Produto.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textProduto_Produto.setEditable(false);
 		textProduto_Produto.setColumns(10);
 		
 		JLabel lblID_Produto = new JLabel("ID:");
+		lblID_Produto.setBounds(275, 101, 17, 18);
 		lblID_Produto.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		textCodigo_Produto = new JTextField();
+		textCodigo_Produto.setBounds(712, 129, 224, 24);
 		textCodigo_Produto.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textCodigo_Produto.setEditable(false);
 		textCodigo_Produto.setColumns(10);
 		
 		JButton btnSalvar_Produto = new JButton("Salvar Cadastro");
+		btnSalvar_Produto.setBounds(376, 284, 160, 25);
 		btnSalvar_Produto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ProdutoEntity produto = new ProdutoEntity();
@@ -1395,6 +1188,7 @@ public class Tela_Cadastro extends JFrame {
 		btnSalvar_Produto.setFont(new Font("Calibri", Font.BOLD, 13));
 		
 		JButton btnLimpar_Produto = new JButton("Limpar Formul\u00E1rio");
+		btnLimpar_Produto.setBounds(546, 284, 160, 25);
 		btnLimpar_Produto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textProduto_Produto.setText("");
@@ -1409,6 +1203,7 @@ public class Tela_Cadastro extends JFrame {
 		btnLimpar_Produto.setFont(new Font("Calibri", Font.BOLD, 13));
 		
 		JButton btnAtualizar_Produto = new JButton("Atualizar Tabela");
+		btnAtualizar_Produto.setBounds(716, 284, 160, 25);
 		btnAtualizar_Produto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				instanciarTabelaProduto();
@@ -1419,116 +1214,18 @@ public class Tela_Cadastro extends JFrame {
 		btnAtualizar_Produto.setFont(new Font("Calibri", Font.BOLD, 13));
 		
 		JLabel lblBuscar_Produto = new JLabel("Procurar por ID:");
+		lblBuscar_Produto.setBounds(11, 289, 95, 18);
 		lblBuscar_Produto.setFont(new Font("Calibri", Font.BOLD, 14));
 		
 		JButton btnOk_Produto = new JButton("Ok");
+		btnOk_Produto.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 11));
+		btnOk_Produto.setBounds(110, 284, 50, 25);
 		btnOk_Produto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				carregarProduto(textID_Produto.getText());
 			}
 		});
 		btnOk_Produto.setBackground(Color.WHITE);
-		GroupLayout gl_painel_Produtos = new GroupLayout(painel_Produtos);
-		gl_painel_Produtos.setHorizontalGroup(
-			gl_painel_Produtos.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_painel_Produtos.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblBuscar_Produto, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnOk_Produto)
-					.addGap(229)
-					.addComponent(btnSalvar_Produto)
-					.addGap(6)
-					.addComponent(btnLimpar_Produto)
-					.addGap(6)
-					.addComponent(btnAtualizar_Produto)
-					.addContainerGap(381, Short.MAX_VALUE))
-				.addGroup(gl_painel_Produtos.createSequentialGroup()
-					.addContainerGap(511, Short.MAX_VALUE)
-					.addComponent(lblCadastro_Produto)
-					.addGap(509))
-				.addGroup(gl_painel_Produtos.createSequentialGroup()
-					.addGap(11)
-					.addComponent(scrollPane_Produto, GroupLayout.DEFAULT_SIZE, 1182, Short.MAX_VALUE)
-					.addContainerGap())
-				.addGroup(gl_painel_Produtos.createSequentialGroup()
-					.addContainerGap(400, Short.MAX_VALUE)
-					.addComponent(btnNovo_Produto, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnEditar_Produto, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnCancelar_Produto)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnDeletar_Produto, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
-					.addGap(399))
-				.addGroup(gl_painel_Produtos.createSequentialGroup()
-					.addGap(261)
-					.addGroup(gl_painel_Produtos.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblProduto_Produto)
-						.addComponent(lblCusto_Produto)
-						.addComponent(lblVenda_Produto))
-					.addPreferredGap(ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-					.addGroup(gl_painel_Produtos.createParallelGroup(Alignment.LEADING)
-						.addComponent(textCusto_Produto, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_painel_Produtos.createSequentialGroup()
-							.addGroup(gl_painel_Produtos.createParallelGroup(Alignment.LEADING)
-								.addComponent(textProduto_Produto, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textVenda_Produto, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE))
-							.addGap(10)
-							.addGroup(gl_painel_Produtos.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblCodigo_Produto)
-								.addComponent(lblID_Produto))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(gl_painel_Produtos.createParallelGroup(Alignment.LEADING)
-								.addComponent(textCodigo_Produto, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textID_Produto, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE))))
-					.addGap(260))
-		);
-		gl_painel_Produtos.setVerticalGroup(
-			gl_painel_Produtos.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_painel_Produtos.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblCadastro_Produto)
-					.addGap(21)
-					.addGroup(gl_painel_Produtos.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNovo_Produto, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnEditar_Produto, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnCancelar_Produto, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnDeletar_Produto, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
-					.addGap(11)
-					.addGroup(gl_painel_Produtos.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblProduto_Produto)
-						.addComponent(textProduto_Produto, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textCodigo_Produto, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblCodigo_Produto))
-					.addGap(9)
-					.addGroup(gl_painel_Produtos.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textVenda_Produto, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textID_Produto, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblVenda_Produto)
-						.addComponent(lblID_Produto))
-					.addGap(12)
-					.addGroup(gl_painel_Produtos.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblCusto_Produto)
-						.addComponent(textCusto_Produto, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_painel_Produtos.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_painel_Produtos.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-							.addGroup(gl_painel_Produtos.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnOk_Produto)
-								.addComponent(lblBuscar_Produto, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE))
-							.addGap(18))
-						.addGroup(gl_painel_Produtos.createSequentialGroup()
-							.addGap(18)
-							.addGroup(gl_painel_Produtos.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnSalvar_Produto)
-								.addComponent(btnLimpar_Produto)
-								.addComponent(btnAtualizar_Produto))
-							.addPreferredGap(ComponentPlacement.RELATED)))
-					.addComponent(scrollPane_Produto, GroupLayout.PREFERRED_SIZE, 360, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
 		
 		table_Produto = new JTable();
 		table_Produto.addMouseListener(new MouseAdapter() {
@@ -1547,18 +1244,36 @@ public class Tela_Cadastro extends JFrame {
 		table_Produto.getColumnModel().getColumn(2).setPreferredWidth(92);
 		table_Produto.getColumnModel().getColumn(3).setPreferredWidth(90);
 		table_Produto.getColumnModel().getColumn(4).setPreferredWidth(98);
+		contentPane_FarmaciaSoft.setLayout(null);
 		scrollPane_Produto.setViewportView(table_Produto);
-		painel_Produtos.setLayout(gl_painel_Produtos);
-		GroupLayout gl_contentPane_FarmaciaSoft = new GroupLayout(contentPane_FarmaciaSoft);
-		gl_contentPane_FarmaciaSoft.setHorizontalGroup(
-			gl_contentPane_FarmaciaSoft.createParallelGroup(Alignment.LEADING)
-				.addComponent(tabbedPane_FarmaciaSoft, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-		);
-		gl_contentPane_FarmaciaSoft.setVerticalGroup(
-			gl_contentPane_FarmaciaSoft.createParallelGroup(Alignment.LEADING)
-				.addComponent(tabbedPane_FarmaciaSoft, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-		);
-		contentPane_FarmaciaSoft.setLayout(gl_contentPane_FarmaciaSoft);
+		painel_Produtos.setLayout(null);
+		painel_Produtos.add(lblBuscar_Produto);
+		painel_Produtos.add(btnOk_Produto);
+		painel_Produtos.add(btnSalvar_Produto);
+		painel_Produtos.add(btnLimpar_Produto);
+		painel_Produtos.add(btnAtualizar_Produto);
+		painel_Produtos.add(lblCadastro_Produto);
+		painel_Produtos.add(scrollPane_Produto);
+		painel_Produtos.add(btnNovo_Produto);
+		painel_Produtos.add(btnEditar_Produto);
+		painel_Produtos.add(btnCancelar_Produto);
+		painel_Produtos.add(btnDeletar_Produto);
+		painel_Produtos.add(lblProduto_Produto);
+		painel_Produtos.add(lblCusto_Produto);
+		painel_Produtos.add(lblVenda_Produto);
+		painel_Produtos.add(textCusto_Produto);
+		painel_Produtos.add(textProduto_Produto);
+		painel_Produtos.add(textVenda_Produto);
+		painel_Produtos.add(lblCodigo_Produto);
+		painel_Produtos.add(lblID_Produto);
+		painel_Produtos.add(textCodigo_Produto);
+		painel_Produtos.add(textID_Produto);
+		
+		JLabel lblBackground_Produto = new JLabel("");
+		lblBackground_Produto.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/background.jpg")));
+		lblBackground_Produto.setBounds(0, 0, 1250, 705);
+		painel_Produtos.add(lblBackground_Produto);
+		contentPane_FarmaciaSoft.add(tabbedPane_FarmaciaSoft);
 			
 		}
 		/* Fim da tela do Produto */
