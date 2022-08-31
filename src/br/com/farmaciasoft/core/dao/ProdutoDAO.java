@@ -20,8 +20,8 @@ public class ProdutoDAO {
 		try {
 			ps = ConexaoMySQL.getConexao().prepareStatement(sql);
 			ps.setString(1, produto.getNome());
-			ps.setDouble(2, produto.getP_venda());
-			ps.setDouble(3, produto.getP_custo());
+			ps.setDouble(2, produto.getpVenda());
+			ps.setDouble(3, produto.getpCusto());
 			ps.setString(4, produto.getCodigo());
 			
 			ps.execute();
@@ -57,8 +57,8 @@ public class ProdutoDAO {
 				ProdutoEntity produ = new ProdutoEntity();
 				produ.setId(rs.getLong("ID_PRODUTO"));
 				produ.setNome(rs.getString("NOME_PRODUTO"));
-				produ.setP_venda(rs.getDouble("VENDA_PRODUTO"));
-				produ.setP_custo(rs.getDouble("CUSTO_PRODUTO"));
+				produ.setpVenda(rs.getDouble("VENDA_PRODUTO"));
+				produ.setpCusto(rs.getDouble("CUSTO_PRODUTO"));
 				produ.setCodigo(rs.getString("CODBARRAS_PRODUTO"));
 				produto.add(produ);
 			}
@@ -117,8 +117,8 @@ public class ProdutoDAO {
 				produtoEncontrado = new ProdutoEntity();
 				produtoEncontrado.setId(rs.getLong("ID_PRODUTO"));
 				produtoEncontrado.setNome(rs.getString("NOME_PRODUTO"));
-				produtoEncontrado.setP_venda(rs.getDouble("VENDA_PRODUTO"));
-				produtoEncontrado.setP_custo(rs.getDouble("CUSTO_PRODUTO"));
+				produtoEncontrado.setpVenda(rs.getDouble("VENDA_PRODUTO"));
+				produtoEncontrado.setpCusto(rs.getDouble("CUSTO_PRODUTO"));
 				produtoEncontrado.setCodigo(rs.getString("CODBARRAS_PRODUTO"));
 			}
 			
@@ -146,8 +146,8 @@ public class ProdutoDAO {
 		try {
 			ps = ConexaoMySQL.getConexao().prepareStatement(sql);
 			ps.setString(1, produto.getNome());
-			ps.setDouble(2, produto.getP_venda());
-			ps.setDouble(3, produto.getP_custo());
+			ps.setDouble(2, produto.getpVenda());
+			ps.setDouble(3, produto.getpCusto());
 			ps.setString(4, produto.getCodigo());
 			ps.setLong(5, produto.getId());
 			

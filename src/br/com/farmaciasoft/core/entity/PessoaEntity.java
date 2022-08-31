@@ -9,6 +9,7 @@ public class PessoaEntity {
 	private String nome, endereco, cidade, estado;
 	private Integer num;
 	private Long codigo;
+	private String login, senha;
 	
 	public String getNome() {
 		return nome;
@@ -60,5 +61,19 @@ public class PessoaEntity {
 			return false;
 		PessoaEntity other = (PessoaEntity) obj;
 		return Objects.equals(codigo, other.codigo);
+		
+		
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 }

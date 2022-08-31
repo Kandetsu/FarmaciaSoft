@@ -177,4 +177,42 @@ public class ClienteDAO {
 		}
 		return "Dados do Cliente Alterado!";
 	}
+	
+	public ClienteEntity autenticar(String login, String senha) throws BusinessException{
+		
+		String sql = "SELECT ID_USU, LOGIN_USU, SENHA_USU FROM LOGIN WHERE LOGIN_USU = ? AND SENHA_USU = ?";
+		
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			ps = ConexaoMySQL.getConexao().prepareStatement(sql);
+			ps.setString(1, login);
+			ps.setString(2, senha);
+			
+			rs = ps.executeQuery();
+			
+			ClienteEntity clienteAutenticado = null;
+			
+			if (rs.next()) {
+				clienteAutenticado = new ClienteEntity();
+				clienteAutenticado.setCodigo(rs.getLong("ID_USU"));
+				clienteAutenticado.setLogin(rs.getString("LOGIN_USU"));
+				clienteAutenticado.setSenha(rs.getString("SENHA_USU"));
+			}
+			return clienteAutenticado;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new BusinessException("Erro ao tentar autenticar!");
+		}finally {
+			try {
+				ps.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
 }

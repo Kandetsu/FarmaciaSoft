@@ -8,8 +8,30 @@ import br.com.farmaciasoft.core.util.exception.BusinessException;
 
 public class FuncionarioBO {
 	public String salvarFuncionario(FuncionarioEntity funcionario) throws BusinessException {
-		FuncionarioDAO dao = new FuncionarioDAO();
-		return dao.salvarFuncionario(funcionario);
+		if(funcionario.getNome() == null || funcionario.getNome().equals("")) {
+			throw new BusinessException("O Nome precisa ser preenchido!");
+		}else if(funcionario.getCpf() == null || funcionario.getCpf().equals("")) {
+			throw new BusinessException("O CPF precisa ser preenchido!");
+		}else if(funcionario.getIdade() < 0 || funcionario.getIdade() >= 110) {
+			throw new BusinessException("A Idade está no formato errado!");
+		}else if(funcionario.getEndereco() == null || funcionario.getEndereco().equals("")){
+			throw new BusinessException("O Endereço precisa ser preenchido!");
+		}else if(funcionario.getNum() <= 0){
+			throw new BusinessException("O Número da casa é menor que 1!");
+		}else if(funcionario.getCidade() == null || funcionario.getCidade().equals("")){
+			throw new BusinessException("A Cidade precisa ser preenchido!");
+		}else if(funcionario.getEstado() == null || funcionario.getEstado().equals("")){
+			throw new BusinessException("O Estado precisa ser preenchido!");
+		}else if (funcionario.getCargo() == null || funcionario.getCargo().equals("")) {
+			throw new BusinessException("O Cargo precisa ser preenchido!");
+		}else if (funcionario.getLoja() == null) {
+			throw new BusinessException("A Loja precisa ser preenchida!");
+		}else if (funcionario.getSalario() == null) {
+			throw new BusinessException("O Salário precisa ser preenchido!");
+		}else {
+			FuncionarioDAO dao = new FuncionarioDAO();
+			return dao.salvarFuncionario(funcionario);
+		}
 	}
 	
 	public List<FuncionarioEntity> listarFuncionarios() throws BusinessException{

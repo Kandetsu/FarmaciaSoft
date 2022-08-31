@@ -4,7 +4,7 @@ public class ProdutoEntity {
 
 	private String nome, codigo;
 	private Long id;
-	private Double p_custo, p_venda;
+	private Double pCusto, pVenda;
 	
 	public String getNome() {
 		return nome;
@@ -24,17 +24,17 @@ public class ProdutoEntity {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Double getP_custo() {
-		return p_custo;
+	public Double getpCusto() {
+		return pCusto;
 	}
-	public void setP_custo(Double p_custo) {
-		this.p_custo = p_custo;
+	public void setpCusto(Double pCusto) {
+		this.pCusto = pCusto;
 	}
-	public Double getP_venda() {
-		return p_venda;
+	public Double getpVenda() {
+		return pVenda;
 	}
-	public void setP_venda(Double p_venda) {
-		this.p_venda = p_venda;
+	public void setpVenda(Double pVenda) {
+		this.pVenda = pVenda;
 	}	
 	
 	

@@ -30,4 +30,7 @@ public class ClienteService {
 		return new ClienteBO().alterarCliente(cliente);
 	}
 	
+	public ClienteEntity autenticar(String login, String senha) throws BusinessException{
+		return new ClienteBO().autenticar(login, senha);
+	}
 }

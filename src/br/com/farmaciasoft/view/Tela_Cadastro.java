@@ -223,42 +223,49 @@ public class Tela_Cadastro extends JFrame {
 		btnAtualizar_Cliente.setFont(new Font("Calibri", Font.BOLD, 13));
 		
 		textNome_Cliente = new JTextField();
+		textNome_Cliente.setHorizontalAlignment(SwingConstants.CENTER);
 		textNome_Cliente.setBounds(375, 129, 224, 24);
 		textNome_Cliente.setEditable(false);
 		textNome_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textNome_Cliente.setColumns(10);
 		
 		textCPF_Cliente = new JTextField();
+		textCPF_Cliente.setHorizontalAlignment(SwingConstants.CENTER);
 		textCPF_Cliente.setBounds(375, 159, 224, 24);
 		textCPF_Cliente.setEditable(false);
 		textCPF_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textCPF_Cliente.setColumns(10);
 		
 		textIdade_Cliente = new JTextField();
+		textIdade_Cliente.setHorizontalAlignment(SwingConstants.CENTER);
 		textIdade_Cliente.setBounds(375, 189, 224, 24);
 		textIdade_Cliente.setEditable(false);
 		textIdade_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textIdade_Cliente.setColumns(10);
 		
 		textEndereco_Cliente = new JTextField();
+		textEndereco_Cliente.setHorizontalAlignment(SwingConstants.CENTER);
 		textEndereco_Cliente.setBounds(375, 219, 224, 24);
 		textEndereco_Cliente.setEditable(false);
 		textEndereco_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textEndereco_Cliente.setColumns(10);
 		
 		textNumCasa_Cliente = new JTextField();
+		textNumCasa_Cliente.setHorizontalAlignment(SwingConstants.CENTER);
 		textNumCasa_Cliente.setBounds(714, 99, 224, 24);
 		textNumCasa_Cliente.setEditable(false);
 		textNumCasa_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textNumCasa_Cliente.setColumns(10);
 		
 		textCidade_Cliente = new JTextField();
+		textCidade_Cliente.setHorizontalAlignment(SwingConstants.CENTER);
 		textCidade_Cliente.setBounds(714, 129, 224, 24);
 		textCidade_Cliente.setEditable(false);
 		textCidade_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textCidade_Cliente.setColumns(10);
 		
 		textEstado_Cliente = new JTextField();
+		textEstado_Cliente.setHorizontalAlignment(SwingConstants.CENTER);
 		textEstado_Cliente.setBounds(714, 159, 224, 24);
 		textEstado_Cliente.setEditable(false);
 		textEstado_Cliente.setFont(new Font("Calibri", Font.PLAIN, 14));
@@ -295,6 +302,14 @@ public class Tela_Cadastro extends JFrame {
 				textNumCasa_Cliente.setEditable(true);
 				textCidade_Cliente.setEditable(true);
 				textEstado_Cliente.setEditable(true);
+				textNome_Cliente.setText("");
+				textCPF_Cliente.setText("");
+				textIdade_Cliente.setText("");
+				textEndereco_Cliente.setText("");
+				textNumCasa_Cliente.setText("");
+				textCidade_Cliente.setText("");
+				textEstado_Cliente.setText("");
+				textID_Cliente.setText("");
 			}
 		});
 		
@@ -441,6 +456,17 @@ public class Tela_Cadastro extends JFrame {
 				textNome_Funcionario.setEditable(true);
 				textNumCasa_Funcionario.setEditable(true);
 				textSalario_Funcionario.setEditable(true);
+				textCargo_Funcionario.setText("");
+				textCidade_Funcionario.setText("");
+				textCPF_Funcionario.setText("");
+				textEndereco_Funcionario.setText("");
+				textEstado_Funcionario.setText("");
+				textID_Funcionario.setText("");
+				textIdade_Funcionario.setText("");
+				textLoja_Funcionario.setText("");
+				textNome_Funcionario.setText("");
+				textNumCasa_Funcionario.setText("");
+				textSalario_Funcionario.setText("");
 			}
 		});
 		btnNovo_Funcionario.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/plus.png")));
@@ -524,24 +550,28 @@ public class Tela_Cadastro extends JFrame {
 		lblEndereco_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		textNome_Funcionario = new JTextField();
+		textNome_Funcionario.setHorizontalAlignment(SwingConstants.CENTER);
 		textNome_Funcionario.setBounds(375, 129, 224, 24);
 		textNome_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textNome_Funcionario.setEditable(false);
 		textNome_Funcionario.setColumns(10);
 		
 		textCPF_Funcionario = new JTextField();
+		textCPF_Funcionario.setHorizontalAlignment(SwingConstants.CENTER);
 		textCPF_Funcionario.setBounds(375, 159, 224, 24);
 		textCPF_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textCPF_Funcionario.setEditable(false);
 		textCPF_Funcionario.setColumns(10);
 		
 		textIdade_Funcionario = new JTextField();
+		textIdade_Funcionario.setHorizontalAlignment(SwingConstants.CENTER);
 		textIdade_Funcionario.setBounds(375, 189, 224, 24);
 		textIdade_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textIdade_Funcionario.setEditable(false);
 		textIdade_Funcionario.setColumns(10);
 		
 		textEndereco_Funcionario = new JTextField();
+		textEndereco_Funcionario.setHorizontalAlignment(SwingConstants.CENTER);
 		textEndereco_Funcionario.setBounds(375, 219, 224, 24);
 		textEndereco_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textEndereco_Funcionario.setEditable(false);
@@ -564,24 +594,28 @@ public class Tela_Cadastro extends JFrame {
 		lblID_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		textNumCasa_Funcionario = new JTextField();
+		textNumCasa_Funcionario.setHorizontalAlignment(SwingConstants.CENTER);
 		textNumCasa_Funcionario.setBounds(712, 99, 224, 24);
 		textNumCasa_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textNumCasa_Funcionario.setEditable(false);
 		textNumCasa_Funcionario.setColumns(10);
 		
 		textCidade_Funcionario = new JTextField();
+		textCidade_Funcionario.setHorizontalAlignment(SwingConstants.CENTER);
 		textCidade_Funcionario.setBounds(712, 129, 224, 24);
 		textCidade_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textCidade_Funcionario.setEditable(false);
 		textCidade_Funcionario.setColumns(10);
 		
 		textEstado_Funcionario = new JTextField();
+		textEstado_Funcionario.setHorizontalAlignment(SwingConstants.CENTER);
 		textEstado_Funcionario.setBounds(712, 159, 224, 24);
 		textEstado_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textEstado_Funcionario.setEditable(false);
 		textEstado_Funcionario.setColumns(10);
 		
 		textID_Funcionario = new JTextField();
+		textID_Funcionario.setHorizontalAlignment(SwingConstants.CENTER);
 		textID_Funcionario.setBounds(375, 99, 224, 24);
 		textID_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textID_Funcionario.setColumns(10);
@@ -662,6 +696,7 @@ public class Tela_Cadastro extends JFrame {
 		lblCargo_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		textCargo_Funcionario = new JTextField();
+		textCargo_Funcionario.setHorizontalAlignment(SwingConstants.CENTER);
 		textCargo_Funcionario.setBounds(712, 189, 224, 24);
 		textCargo_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textCargo_Funcionario.setEditable(false);
@@ -672,6 +707,7 @@ public class Tela_Cadastro extends JFrame {
 		lblLoja_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		textLoja_Funcionario = new JTextField();
+		textLoja_Funcionario.setHorizontalAlignment(SwingConstants.CENTER);
 		textLoja_Funcionario.setBounds(712, 219, 224, 24);
 		textLoja_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textLoja_Funcionario.setEditable(false);
@@ -683,6 +719,7 @@ public class Tela_Cadastro extends JFrame {
 		lblSalario_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		textSalario_Funcionario = new JTextField();
+		textSalario_Funcionario.setHorizontalAlignment(SwingConstants.CENTER);
 		textSalario_Funcionario.setBounds(510, 249, 224, 24);
 		textSalario_Funcionario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textSalario_Funcionario.setEditable(false);
@@ -776,6 +813,13 @@ public class Tela_Cadastro extends JFrame {
 				textEndereco_Fornecedor.setEditable(true);
 				textEstado_Fornecedor.setEditable(true);
 				textNum_Fornecedor.setEditable(true);
+				textCidade_Fornecedor.setText("");
+				textCNPJ_Fornecedor.setText("");
+				textEmpresa_Fornecedor.setText("");
+				textEndereco_Fornecedor.setText("");
+				textEstado_Fornecedor.setText("");
+				textID_Fornecedor.setText("");
+				textNum_Fornecedor.setText("");
 			}
 		});
 		btnNovo_Fornecedor.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/plus.png")));
@@ -852,24 +896,28 @@ public class Tela_Cadastro extends JFrame {
 		lblNum_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		textEmpresa_Fornecedor = new JTextField();
+		textEmpresa_Fornecedor.setHorizontalAlignment(SwingConstants.CENTER);
 		textEmpresa_Fornecedor.setBounds(373, 129, 224, 24);
 		textEmpresa_Fornecedor.setEditable(false);
 		textEmpresa_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textEmpresa_Fornecedor.setColumns(10);
 		
 		textCNPJ_Fornecedor = new JTextField();
+		textCNPJ_Fornecedor.setHorizontalAlignment(SwingConstants.CENTER);
 		textCNPJ_Fornecedor.setBounds(373, 159, 224, 24);
 		textCNPJ_Fornecedor.setEditable(false);
 		textCNPJ_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textCNPJ_Fornecedor.setColumns(10);
 		
 		textEndereco_Fornecedor = new JTextField();
+		textEndereco_Fornecedor.setHorizontalAlignment(SwingConstants.CENTER);
 		textEndereco_Fornecedor.setBounds(373, 189, 224, 24);
 		textEndereco_Fornecedor.setEditable(false);
 		textEndereco_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textEndereco_Fornecedor.setColumns(10);
 		
 		textNum_Fornecedor = new JTextField();
+		textNum_Fornecedor.setHorizontalAlignment(SwingConstants.CENTER);
 		textNum_Fornecedor.setBounds(373, 219, 224, 24);
 		textNum_Fornecedor.setEditable(false);
 		textNum_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
@@ -888,17 +936,20 @@ public class Tela_Cadastro extends JFrame {
 		lblID_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		textID_Fornecedor = new JTextField();
-		textID_Fornecedor.setBounds(375, 99, 224, 24);
+		textID_Fornecedor.setHorizontalAlignment(SwingConstants.CENTER);
+		textID_Fornecedor.setBounds(373, 98, 224, 24);
 		textID_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textID_Fornecedor.setColumns(10);
 		
 		textEstado_Fornecedor = new JTextField();
+		textEstado_Fornecedor.setHorizontalAlignment(SwingConstants.CENTER);
 		textEstado_Fornecedor.setBounds(712, 129, 224, 24);
 		textEstado_Fornecedor.setEditable(false);
 		textEstado_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textEstado_Fornecedor.setColumns(10);
 		
 		textCidade_Fornecedor = new JTextField();
+		textCidade_Fornecedor.setHorizontalAlignment(SwingConstants.CENTER);
 		textCidade_Fornecedor.setBounds(712, 99, 224, 24);
 		textCidade_Fornecedor.setEditable(false);
 		textCidade_Fornecedor.setFont(new Font("Calibri", Font.PLAIN, 14));
@@ -1054,6 +1105,11 @@ public class Tela_Cadastro extends JFrame {
 				textCodigo_Produto.setEditable(true);
 				textCusto_Produto.setEditable(true);
 				textVenda_Produto.setEditable(true);
+				textProduto_Produto.setText("");
+				textCodigo_Produto.setText("");
+				textCusto_Produto.setText("");
+				textID_Produto.setText("");
+				textVenda_Produto.setText("");
 			}
 		});
 		btnNovo_Produto.setIcon(new ImageIcon(Tela_Cadastro.class.getResource("/br/com/farmaciasoft/view/assets/plus.png")));
@@ -1125,23 +1181,27 @@ public class Tela_Cadastro extends JFrame {
 		lblProduto_Produto.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		textID_Produto = new JTextField();
+		textID_Produto.setHorizontalAlignment(SwingConstants.CENTER);
 		textID_Produto.setBounds(375, 99, 224, 24);
 		textID_Produto.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textID_Produto.setColumns(10);
 		
 		textCusto_Produto = new JTextField();
+		textCusto_Produto.setHorizontalAlignment(SwingConstants.CENTER);
 		textCusto_Produto.setBounds(712, 99, 224, 24);
 		textCusto_Produto.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textCusto_Produto.setEditable(false);
 		textCusto_Produto.setColumns(10);
 		
 		textVenda_Produto = new JTextField();
+		textVenda_Produto.setHorizontalAlignment(SwingConstants.CENTER);
 		textVenda_Produto.setBounds(375, 159, 224, 24);
 		textVenda_Produto.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textVenda_Produto.setEditable(false);
 		textVenda_Produto.setColumns(10);
 		
 		textProduto_Produto = new JTextField();
+		textProduto_Produto.setHorizontalAlignment(SwingConstants.CENTER);
 		textProduto_Produto.setBounds(375, 129, 224, 24);
 		textProduto_Produto.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textProduto_Produto.setEditable(false);
@@ -1152,6 +1212,7 @@ public class Tela_Cadastro extends JFrame {
 		lblID_Produto.setFont(new Font("Calibri", Font.PLAIN, 14));
 		
 		textCodigo_Produto = new JTextField();
+		textCodigo_Produto.setHorizontalAlignment(SwingConstants.CENTER);
 		textCodigo_Produto.setBounds(712, 129, 224, 24);
 		textCodigo_Produto.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textCodigo_Produto.setEditable(false);
@@ -1163,8 +1224,8 @@ public class Tela_Cadastro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ProdutoEntity produto = new ProdutoEntity();
 				produto.setNome(textProduto_Produto.getText());
-				produto.setP_venda(Double.parseDouble((textVenda_Produto.getText())));
-				produto.setP_custo(Double.parseDouble(textCusto_Produto.getText()));
+				produto.setpVenda(Double.parseDouble((textVenda_Produto.getText())));
+				produto.setpCusto(Double.parseDouble(textCusto_Produto.getText()));
 				produto.setCodigo(textCodigo_Produto.getText());
 				
 				@SuppressWarnings("unused")
@@ -1331,7 +1392,7 @@ public class Tela_Cadastro extends JFrame {
 				model.getDataVector().removeAllElements();
 				
 				for (ProdutoEntity produtoEntity : produtos) {
-					model.addRow(new Object[] {produtoEntity.getId(), produtoEntity.getNome(), produtoEntity.getP_venda(), produtoEntity.getP_custo(), produtoEntity.getCodigo()});
+					model.addRow(new Object[] {produtoEntity.getId(), produtoEntity.getNome(), produtoEntity.getpVenda(), produtoEntity.getpCusto(), produtoEntity.getCodigo()});
 				}
 				
 			} catch (BusinessException e) {
@@ -1358,7 +1419,7 @@ public class Tela_Cadastro extends JFrame {
 				}
 				
 			} catch (BusinessException e) {
-				JOptionPane.showMessageDialog(null, e.getErro(), "Ocorreu um erro inesperado!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, e.getErro(), "Ocorreu um erro!", JOptionPane.ERROR_MESSAGE);
 			}
 			
 		}
@@ -1414,8 +1475,8 @@ public class Tela_Cadastro extends JFrame {
 					JOptionPane.showMessageDialog(null, "O produto não foi encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
 				} else {
 					textProduto_Produto.setText(produtoEncontrado.getNome());
-					textVenda_Produto.setText(String.valueOf(produtoEncontrado.getP_venda()));
-					textCusto_Produto.setText(String.valueOf(produtoEncontrado.getP_custo()));
+					textVenda_Produto.setText(String.valueOf(produtoEncontrado.getpVenda()));
+					textCusto_Produto.setText(String.valueOf(produtoEncontrado.getpCusto()));
 					textCodigo_Produto.setText(produtoEncontrado.getCodigo());
 				}
 				
